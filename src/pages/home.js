@@ -1,8 +1,8 @@
 import { Header } from '../components/Header/index.js';
 
-const $container = document.querySelector('.container');
+const $content = document.querySelector('.content');
 
 export const Home = () => {
   const $header = Header(100000);
-  $container.appendChild($header);
+  $content.appendChild($header);
 };
