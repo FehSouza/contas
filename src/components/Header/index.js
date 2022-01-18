@@ -5,15 +5,11 @@ import { Icon } from '../shared/Icon/index.js';
 importCSS('./src/components/Header/styles.css');
 
 export const Header = (moneyTotal) => {
-  const $container = Element('div', 'container-header');
-  const $moneyWrapper = Element('div', 'money-wrapper-header');
   const moneyValue = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(moneyTotal);
-  const $moneyTotal = Element('span', 'money-total-header', undefined, undefined, moneyValue);
+  const $moneyTotal = Element('span', { class: 'money-total-header', children: moneyValue });
   const $icon = Icon('coin');
-
-  $container.appendChild($moneyWrapper);
-  $moneyWrapper.appendChild($moneyTotal);
-  $moneyWrapper.appendChild($icon);
+  const $moneyWrapper = Element('div', { class: 'money-wrapper-header', children: [$moneyTotal, $icon] });
+  const $container = Element('div', { class: 'container-header', children: $moneyWrapper });
 
   return $container;
 };

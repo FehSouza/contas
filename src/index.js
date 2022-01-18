@@ -1,11 +1,9 @@
-import { Home } from './pages/home.js';
-import { Button } from './components/shared/Button/index.js';
+import { Home } from './pages/Home/index.js';
+import { Element } from './components/shared/Element/index.js';
 
-const $container = document.querySelector('.content');
-const $navbar = document.querySelector('.navbar');
+const $container = document.querySelector('.container');
 
-const $buttonAddTransaction = Button('button-add-transaction-navbar', undefined, 'add');
+const $content = Element('div', { class: 'content' });
+$container.appendChild($content);
 
-$navbar.appendChild($buttonAddTransaction);
-
-Home();
+$content.appendChild(Home());
