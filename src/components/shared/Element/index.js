@@ -11,6 +11,7 @@ export const Element = (type, properties) => {
     }
     if (key === 'children' && Array.isArray(properties[key])) {
       for (const item of properties[key]) {
+        if (item === undefined || item === null) continue;
         if (typeof item === 'string') {
           const textNode = document.createTextNode(item);
           elem.appendChild(textNode);
@@ -21,6 +22,7 @@ export const Element = (type, properties) => {
       continue;
     }
     if (key === 'children' && !Array.isArray(properties[key])) {
+      if (properties[key] === undefined || properties[key] === null) continue;
       if (typeof properties[key] === 'string') {
         const textNode = document.createTextNode(properties[key]);
         elem.appendChild(textNode);

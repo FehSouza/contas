@@ -1,0 +1,24 @@
+.page-navbar {
+  background-color: var(--color-white-50-A100);
+  box-shadow: 0 -12px 6px var(--color-black-50-A07);
+  height: 50px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.button-add-account {
+  background-color: var(--color-blue-50-A100);
+  width: 56px;
+  height: 56px;
+  border-radius: 56px;
+  border: none;
+  margin-top: -16px;
+}
+
+.button-home, .button-wallet {
+  border: none;
+}
+
+.fa-plus, .fa-home, .fa-wallet {
+  font-size: 22px;
+}
