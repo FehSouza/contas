@@ -1,16 +1,16 @@
-.container-header {
+.header-container {
   width: 100%;
   background-image: linear-gradient(114deg, var(--color-blue-50-A100), var(--color-blue-100-A100));
 }
 
-.money-wrapper-header {
+.header-money-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 72px;
 }
 
-.money-total-header {
+.header-money-total {
   font-size: 22px;
   margin-right: 16px;
   color: var(--color-white-50-A100);

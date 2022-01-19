@@ -8,8 +8,8 @@ importCSS('./src/pages/Home/styles.css');
 export const Home = () => {
   const $header = Header(100000);
   const $accountsDay = AccountsDay();
-  const $containerAccountsPerDay = Element('div', { class: 'container-accounts-per-day', children: $accountsDay });
-  const $pageHome = Element('div', { class: 'page-home', children: [$header, $containerAccountsPerDay] });
+  const $containerAccountsPerDay = Element('div', { class: 'accounts-per-day-container', children: $accountsDay });
+  const $pageHome = Element('div', { class: 'home-page', children: [$header, $containerAccountsPerDay] });
 
   return $pageHome;
 };

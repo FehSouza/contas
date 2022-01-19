@@ -1,6 +1,6 @@
 import { Element } from '../shared/Element/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
-import { AccountAdd } from '../AccountAdd/index.js'
+import { AccountAdd } from '../AccountAdd/index.js';
 
 importCSS('./src/components/AccountsDay/styles.css');
 

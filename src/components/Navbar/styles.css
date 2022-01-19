@@ -1,4 +1,4 @@
-.page-navbar {
+.navbar-page {
   background-color: var(--color-white-50-A100);
   box-shadow: 0 -12px 6px var(--color-black-50-A07);
   height: 50px;
@@ -6,7 +6,7 @@
   justify-content: space-evenly;
 }
 
-.button-add-account {
+.navbar-button-add-account {
   background-color: var(--color-blue-50-A100);
   width: 56px;
   height: 56px;
@@ -15,10 +15,14 @@
   margin-top: -16px;
 }
 
-.button-home, .button-wallet {
+.navbar-button-home,
+.navbar-button-wallet {
   border: none;
+  background-color: var(--color-white-50-A100);
 }
 
-.fa-plus, .fa-home, .fa-wallet {
+.fa-plus,
+.fa-home,
+.fa-wallet {
   font-size: 22px;
 }

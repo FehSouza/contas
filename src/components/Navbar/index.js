@@ -5,11 +5,11 @@ import { importCSS } from '../../utils/importCss/index.js';
 importCSS('./src/components/Navbar/styles.css');
 
 export const Navbar = () => {
-  const $buttonHome = Button({ icon: 'home', class: 'button-home' });
-  const $buttonAddAccount = Button({ icon: 'add', class: 'button-add-account' });
-  const $buttonWallet = Button({ icon: 'wallet', class: 'button-wallet' });
+  const $buttonHome = Button({ icon: 'home', class: 'navbar-button-home' });
+  const $buttonAddAccount = Button({ icon: 'add', class: 'navbar-button-add-account' });
+  const $buttonWallet = Button({ icon: 'wallet', class: 'navbar-button-wallet' });
   const $pageNavbar = Element('div', {
-    class: 'page-navbar',
+    class: 'navbar-page',
     children: [$buttonHome, $buttonAddAccount, $buttonWallet],
   });
 

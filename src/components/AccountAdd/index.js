@@ -4,7 +4,7 @@ import { importCSS } from '../../utils/importCSS/index.js';
 importCSS('./src/components/AccountAdd/styles.css');
 
 export const AccountAdd = (category, typeCategory, wallet) => {
-  const $categoryColor = Element('div', { class: 'category-color-account' });
+  const $categoryColor = Element('div', { class: 'account-category-color' });
 
   if (category === 'food') $categoryColor.classList.add('color-cyan');
   if (category === 'house') $categoryColor.classList.add('color-brown');
@@ -12,11 +12,11 @@ export const AccountAdd = (category, typeCategory, wallet) => {
   if (category === 'health') $categoryColor.classList.add('color-orange');
   if (category === 'transport') $categoryColor.classList.add('color-yellow');
 
-  const $typeInCategory = Element('span', { class: 'type-category-account', children: typeCategory });
-  const $wallet = Element('span', { class: 'wallet-account', children: wallet });
-  const $wrapper = Element('div', { class: 'category-and-wallet', children: [$typeInCategory, $wallet] })
+  const $category = Element('span', { class: 'account-category', children: typeCategory });
+  const $wallet = Element('span', { class: 'account-wallet', children: wallet });
+  const $categoryAndWallet = Element('div', { class: 'account-category-and-wallet', children: [$category, $wallet] });
 
-  const $accountWrapper = Element('div', { class: 'account-wrapper', children: [$categoryColor, $wrapper] });
+  const $accountWrapper = Element('div', { class: 'account-wrapper', children: [$categoryColor, $categoryAndWallet] });
 
   return $accountWrapper;
 };
