@@ -23,9 +23,14 @@
 
   --color-white-50-A100: #ffffff;
 
-  --category-food: #00ffff;
-  --category-house: #8b4513;
-  --category-education: #ff1493;
-  --category-health: #ff4500;
-  --category-transport: #ffff00;
+  --category-food-A50: #00ffff80;
+  --category-food-A100: #00ffff;
+  --category-house-A50: #8b451380;
+  --category-house-A100: #8b4513;
+  --category-education-A50: #ff149380;
+  --category-education-A100: #ff1493;
+  --category-health-A50: #ff450080;
+  --category-health-A100: #ff4500;
+  --category-transport-A50: #ffff0080;
+  --category-transport-A100: #ffff00;
 }

@@ -1,5 +1,8 @@
 .header-container {
   width: 100%;
+  height: 170px;
+  display: flex;
+  justify-content: center;
   background-image: linear-gradient(114deg, var(--color-blue-50-A100), var(--color-blue-100-A100));
 }
 
@@ -7,7 +10,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 72px;
 }
 
 .header-money-total {

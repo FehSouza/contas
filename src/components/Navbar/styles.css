@@ -3,7 +3,8 @@
   box-shadow: 0 -12px 6px var(--color-black-50-A07);
   height: 50px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  position: relative;
 }
 
 .navbar-button-add-account {
@@ -12,7 +13,9 @@
   height: 56px;
   border-radius: 56px;
   border: none;
-  margin-top: -16px;
+  z-index: 1;
+  position: absolute;
+  top: -30%;
 }
 
 .navbar-button-home,

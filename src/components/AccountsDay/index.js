@@ -4,9 +4,17 @@ import { AccountAdd } from '../AccountAdd/index.js';
 
 importCSS('./src/components/AccountsDay/styles.css');
 
-export const AccountsDay = () => {
-  const $accountAdd = AccountAdd('food', 'Almoço', 'NuBank');
-  const $accountsDayWrapper = Element('div', { class: 'accounts-day-wrapper', children: $accountAdd });
+export const AccountsDay = (properties) => {
+  const $accountsDayWrapper = Element('div', { class: 'accounts-day-wrapper' });
 
+  for (const key in properties) {
+    if (key === 'date') {
+      const $date = Element('h3', { class: 'accounts-day-date', children: properties[key] });
+      $accountsDayWrapper.appendChild($date);
+    }
+  }
+
+  const $accountAdd = AccountAdd(properties);
+  $accountsDayWrapper.appendChild($accountAdd);
   return $accountsDayWrapper;
 };
