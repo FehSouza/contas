@@ -7,7 +7,7 @@
   margin: 16px;
 }
 
-.account-category-color {
+.account-category {
   width: 50px;
   height: 50px;
   border-radius: 50px;
@@ -28,14 +28,14 @@
   background-image: linear-gradient(180deg, var(--category-transport-A100), var(--category-transport-A50));
 }
 
-.account-category-and-wallet {
+.account-title-and-wallet {
   display: flex;
   flex-direction: column;
   position: absolute;
   left: 78px;
 }
 
-.account-category {
+.account-title {
   font-size: 16px;
   font-weight: 700;
   color: var(--color-grey-100-A100);

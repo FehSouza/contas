@@ -1,20 +1,19 @@
 import { Element } from '../shared/Element/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
-import { AccountAdd } from '../AccountAdd/index.js';
+import { Bill } from '../Bill/index.js';
 
 importCSS('./src/components/AccountsDay/styles.css');
 
-export const AccountsDay = (properties) => {
+export const AccountsDay = (props) => {
   const $accountsDayWrapper = Element('div', { class: 'accounts-day-wrapper' });
 
-  for (const key in properties) {
-    if (key === 'date') {
-      const $date = Element('h3', { class: 'accounts-day-date', children: properties[key] });
-      $accountsDayWrapper.appendChild($date);
-    }
+  const $date = Element('h3', { class: 'accounts-day-date', children: props.date });
+  $accountsDayWrapper.appendChild($date);
+
+  for (const item of props.bills) {
+    const $bill = Bill(item);
+    $accountsDayWrapper.appendChild($bill);
   }
 
-  const $accountAdd = AccountAdd(properties);
-  $accountsDayWrapper.appendChild($accountAdd);
   return $accountsDayWrapper;
 };
