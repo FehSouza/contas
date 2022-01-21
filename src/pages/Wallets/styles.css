@@ -1,0 +1,14 @@
+.wallets-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.wallet-content {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

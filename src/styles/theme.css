@@ -1,36 +1,33 @@
 :root {
-  --color-black-50-A07: #00000012;
-  --color-black-50-A16: #00000029;
-  --color-black-50-A100: #000000;
+  --color-black-50: #000000;
+  --color-black-50A: #00000029;
 
-  --color-blue-50-A22: #53a9ff38;
-  --color-blue-50-A29: #53a9ff4a;
-  --color-blue-50-A41: #53a9ff69;
-  --color-blue-50-A100: #53a9ff;
-  --color-blue-100-A100: #328de8;
+  --color-blue-50: #53a9ff;
+  --color-blue-50A: #53a9ff69;
+  --color-blue-100: #328de8;
 
-  --color-green-50-A100: #53ffb9;
+  --color-green-50: #53ffb9;
 
-  --color-grey-50-A100: #f2f2f2;
-  --color-grey-100-A62: #7070709e;
-  --color-grey-100-A100: #707070;
+  --color-grey-50: #f2f2f2;
+  --color-grey-100: #707070;
+  --color-grey-100A: #7070709e;
 
-  --color-purple-50-A100: #8053ff;
-  --color-purple-100-A100: #6f49db;
+  --color-purple-50: #8053ff;
+  --color-purple-100: #6f49db;
 
-  --color-red-50-A100: #ff5353;
-  --color-red-100-A100: #de5959;
+  --color-red-50: #ff5353;
+  --color-red-100: #de5959;
 
-  --color-white-50-A100: #ffffff;
+  --color-white-50: #ffffff;
 
-  --category-food-A50: #00ffff80;
-  --category-food-A100: #00ffff;
-  --category-house-A50: #8b451380;
-  --category-house-A100: #8b4513;
-  --category-education-A50: #ff149380;
-  --category-education-A100: #ff1493;
-  --category-health-A50: #ff450080;
-  --category-health-A100: #ff4500;
-  --category-transport-A50: #ffff0080;
-  --category-transport-A100: #ffff00;
+  --category-food: #00ffff;
+  --category-food-A: #00ffff80;
+  --category-house: #8b4513;
+  --category-house-A: #8b451380;
+  --category-education: #ff1493;
+  --category-education-A: #ff149380;
+  --category-health: #ff4500;
+  --category-health-A: #ff450080;
+  --category-transport: #ffff00;
+  --category-transport-A: #ffff0080;
 }

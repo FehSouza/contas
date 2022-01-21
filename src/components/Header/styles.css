@@ -3,7 +3,7 @@
   height: 170px;
   display: flex;
   justify-content: center;
-  background-image: linear-gradient(114deg, var(--color-blue-50-A100), var(--color-blue-100-A100));
+  background-image: linear-gradient(114deg, var(--color-blue-50), var(--color-blue-100));
 }
 
 .header-money-wrapper {
@@ -15,9 +15,9 @@
 .header-money-total {
   font-size: 22px;
   margin-right: 16px;
-  color: var(--color-white-50-A100);
+  color: var(--color-white-50);
 }
 
 .fa-coins {
-  color: var(--color-white-50-A100);
+  color: var(--color-white-50);
 }

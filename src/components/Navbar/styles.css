@@ -1,6 +1,6 @@
 .navbar-page {
-  background-color: var(--color-white-50-A100);
-  box-shadow: 0 -12px 6px var(--color-black-50-A07);
+  background-color: var(--color-white-50);
+  box-shadow: 0 -12px 6px var(--color-black-50A);
   height: 50px;
   display: flex;
   justify-content: space-around;
@@ -8,7 +8,7 @@
 }
 
 .navbar-button-add-account {
-  background-color: var(--color-blue-50-A100);
+  background-color: var(--color-blue-50);
   width: 56px;
   height: 56px;
   border-radius: 56px;
@@ -21,7 +21,7 @@
 .navbar-button-home,
 .navbar-button-wallet {
   border: none;
-  background-color: var(--color-white-50-A100);
+  background-color: var(--color-white-50);
 }
 
 .fa-plus,

@@ -13,19 +13,19 @@
   border-radius: 50px;
 }
 .color-cyan {
-  background-image: linear-gradient(180deg, var(--category-food-A100), var(--category-food-A50));
+  background-image: linear-gradient(180deg, var(--category-food), var(--category-food-A));
 }
 .color-brown {
-  background-image: linear-gradient(180deg, var(--category-house-A100), var(--category-house-A50));
+  background-image: linear-gradient(180deg, var(--category-house), var(--category-house-A));
 }
 .color-pink {
-  background-image: linear-gradient(180deg, var(--category-education-A100), var(--category-education-A50));
+  background-image: linear-gradient(180deg, var(--category-education), var(--category-education-A));
 }
 .color-orange {
-  background-image: linear-gradient(180deg, var(--category-health-A100), var(--category-health-A50));
+  background-image: linear-gradient(180deg, var(--category-health), var(--category-health-A));
 }
 .color-yellow {
-  background-image: linear-gradient(180deg, var(--category-transport-A100), var(--category-transport-A50));
+  background-image: linear-gradient(180deg, var(--category-transport), var(--category-transport-A));
 }
 
 .account-title-and-wallet {
@@ -38,13 +38,13 @@
 .account-title {
   font-size: 16px;
   font-weight: 700;
-  color: var(--color-grey-100-A100);
+  color: var(--color-grey-100);
 }
 
 .account-wallet,
 .account-status {
   font-size: 12px;
-  color: var(--color-grey-100-A100);
+  color: var(--color-grey-100);
   margin-top: 6px;
 }
 
@@ -58,5 +58,5 @@
 .account-value {
   font-size: 14px;
   font-weight: 700;
-  color: var(--color-grey-100-A100);
+  color: var(--color-grey-100);
 }
