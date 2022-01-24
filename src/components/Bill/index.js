@@ -1,21 +1,26 @@
 import { Element } from '../shared/Element/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
+import { formatMoney } from '../../utils/currency/index.js';
 
 importCSS('./src/components/Bill/styles.css');
 
+const categories = {
+  food: 'color-cyan',
+  house: 'color-brown',
+  education: 'color-pink',
+  health: 'color-orange',
+  transport: 'color-yellow',
+};
+
 export const Bill = ({ category, title, wallet, amount, status }) => {
   const $category = Element('div', { class: 'account-category' });
-  if (category === 'food') $category.classList.add('color-cyan');
-  if (category === 'house') $category.classList.add('color-brown');
-  if (category === 'education') $category.classList.add('color-pink');
-  if (category === 'health') $category.classList.add('color-orange');
-  if (category === 'transport') $category.classList.add('color-yellow');
+  if (category && categories[category]) $category.classList.add(categories[category]);
 
   const $title = Element('span', { class: 'account-title', children: title });
   const $wallet = Element('span', { class: 'account-wallet', children: wallet });
   const $titleAndWallet = Element('div', { class: 'account-title-and-wallet', children: [$title, $wallet] });
 
-  const value = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(amount);
+  const value = formatMoney(amount);
   const $amount = Element('span', { class: 'account-value', children: value });
   const $status = Element('span', { class: 'account-status', children: status });
   const $valueAndStatus = Element('div', { class: 'account-value-and-status', children: [$amount, $status] });
