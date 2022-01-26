@@ -1,15 +1,24 @@
-import { Element } from '../shared/Element/index.js'
+import { Element } from '../shared/Element/index.js';
+import { Icon } from '../shared/Icon/index.js';
+import { importCSS } from '../../utils/importCSS/index.js';
+import { formatMoney } from '../../utils/currency/index.js';
+
+importCSS('./src/components/GoalsItem/styles.css');
 
 export const GoalsItem = ({ title, amount }) => {
-  
-  const teste2 = Element('span', { children: title })
-  const $test = Element('div', {class: 'teste', children: teste2})
+  const $icon = Element('div', { class: 'goals-item-icon', children: Icon('wallet', 'fa-wallet-icon-goals') });
 
-  return $test
-}
+  const $title = Element('h3', { class: 'goals-item-title', children: title });
+  const $statusInternal = Element('div', { class: 'goals-item-status-internal' });
+  const $statusExternal = Element('div', { class: 'goals-item-status-external', children: $statusInternal });
+  const $titleAndStatus = Element('div', { class: 'goals-item-title-and-status', children: [$title, $statusExternal] });
 
+  const value = formatMoney(amount);
+  const $amount = Element('span', { class: 'goals-item-amount', children: value });
 
-// const $goalsListWrapper = GoalsList([
-//   { title: 'Reserva', amount: 200 },
-//   { title: 'Poupança', amount: 18000 },
-// ]);
+  const $goalsItemWrapper = Element('div', {
+    class: 'goals-item-wrapper',
+    children: [$icon, $titleAndStatus, $amount],
+  });
+  return $goalsItemWrapper;
+};

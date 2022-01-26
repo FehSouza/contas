@@ -1,0 +1,59 @@
+.goals-item-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  position: relative;
+}
+
+.goals-item-icon {
+  width: 44px;
+  height: 44px;
+  background-image: linear-gradient(180deg, var(--color-blue-50), var(--color-blue-100));
+  border-radius: 44px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-wallet-icon-goals {
+  color: var(--color-white-50);
+}
+
+.goals-item-title-and-status {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 56px;
+}
+
+.goals-item-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-grey-100);
+}
+
+.goals-item-status-external {
+  width: 160px;
+  height: 12px;
+  background-color: var(--color-white-50);
+  border-radius: 6px;
+  border: 1px solid var(--color-blue-50);
+  margin-top: 8px;
+}
+
+.goals-item-status-internal {
+  width: 50%;
+  height: 100%;
+  background-image: linear-gradient(90deg, var(--color-blue-50), var(--color-blue-100));
+  border-radius: 6px;
+  border: none;
+}
+
+.goals-item-amount {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--color-blue-50);
+}

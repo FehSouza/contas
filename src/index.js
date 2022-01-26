@@ -20,7 +20,7 @@ const handleNavigationWallets = () => {
   $content.appendChild($wallets);
 };
 
-$content.appendChild(Wallets());
+$content.appendChild($home);
 
 const $navbar = Navbar(handleNavigationHome, handleNavigationWallets);
 const $bottom = Element('div', { class: 'navbar', children: $navbar });
