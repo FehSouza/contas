@@ -1,16 +1,17 @@
 import { Element } from '../shared/Element/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
+import { GoalsItem } from '../GoalsItem/index.js';
 
 importCSS('./src/components/GoalsList/styles.css');
 
-export const GoalsList = () => {
-  const $teste2 = Element('span', {children: 'teste'});
-  const $teste = Element('div', {children: $teste2});
+export const GoalsList = (props) => {
+  const $title = Element('span', { class: 'goals-title', children: 'Metas' });
+  const $goalsListWrapper = Element('div', { class: 'goals-list-wrapper', children: $title });
 
-  return $teste;
+  for (const item of props) {
+    const $goalsItem = GoalsItem(item);
+    $goalsListWrapper.appendChild($goalsItem);
+  }
+
+  return $goalsListWrapper;
 };
-
-// const $goalsListWrapper = GoalsList([
-//   { title: 'Reserva', amount: 200 },
-//   { title: 'Poupança', amount: 18000 },
-// ]);

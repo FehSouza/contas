@@ -1,0 +1,18 @@
+.goals-list-wrapper {
+  width: 100%;
+  background-color: var(--color-white-50);
+  margin-top: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+  border-radius: 9px;
+  border: 1px solid var(--color-blue-50A);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.goals-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-blue-50);
+}
