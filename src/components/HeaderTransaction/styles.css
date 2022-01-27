@@ -1,0 +1,33 @@
+.header-transaction-wrapper {
+  width: 100%;
+  height: 48px;
+  background-image: linear-gradient(180deg, var(--color-blue-50), var(--color-blue-100));
+  display: flex;
+  align-items: center;
+}
+
+.header-transaction-button {
+  flex: 1;
+  height: 100%;
+  font-size: 20px;
+  color: var(--color-white-50);
+  background-color: #00000000;
+  border: none;
+  padding: 0;
+}
+
+.transfer-button {
+  flex: 1.3;
+}
+
+.header-transaction-recipe-button {
+  background-image: linear-gradient(180deg, transparent, var(--color-blue-50));
+}
+
+.header-transaction-expense-button {
+  background-image: linear-gradient(180deg, transparent, var(--color-blue-50));
+}
+
+.header-transaction-transfer-button {
+  background-image: linear-gradient(180deg, transparent, var(--color-blue-50));
+}
