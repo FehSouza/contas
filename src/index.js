@@ -10,7 +10,6 @@ const $content = Element('div', { class: 'content' });
 
 const $home = Home();
 const $wallets = Wallets();
-const $addTransaction = AddTransaction();
 
 const handleNavigationHome = () => {
   $content.innerHTML = '';
@@ -23,9 +22,10 @@ const handleNavigationWallets = () => {
 };
 
 const handleNavigationAddTransaction = () => {
+  const $addTransaction = AddTransaction();
   $content.innerHTML = '';
   $content.appendChild($addTransaction);
-}
+};
 
 $content.appendChild($home);
 
