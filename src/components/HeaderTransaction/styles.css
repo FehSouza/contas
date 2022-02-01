@@ -1,4 +1,4 @@
-.header-transaction-wrapper {
+.header-transaction-buttons-wrapper {
   width: 100%;
   height: 48px;
   background-image: linear-gradient(180deg, var(--color-blue-50), var(--color-blue-100));
@@ -22,4 +22,26 @@
 
 .button-on {
   background-image: linear-gradient(180deg, transparent, var(--color-blue-50));
+}
+
+.header-transaction-amount {
+  width: 100%;
+  height: 200px;
+  font-size: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-red-50);
+}
+
+.header-transaction-amount-recipe {
+  color: var(--color-green-50);
+}
+
+.header-transaction-amount-expense {
+  color: var(--color-red-50);
+}
+
+.header-transaction-amount-transfer {
+  color: var(--color-blue-50);
 }

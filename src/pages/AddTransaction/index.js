@@ -5,7 +5,7 @@ import { importCSS } from '../../utils/importCSS/index.js';
 importCSS('./src/pages/AddTransaction/styles.css');
 
 export const AddTransaction = () => {
-  const $addTransactionContent = Element('div', { class: 'add-transaction-content', children: HeaderTransaction() });
+  const $addTransactionContent = Element('div', { class: 'add-transaction-content', children: HeaderTransaction(0) });
 
   return $addTransactionContent;
 };
