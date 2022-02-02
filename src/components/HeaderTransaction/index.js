@@ -34,7 +34,7 @@ export const HeaderTransaction = (amount) => {
 
   const $amountWrapper = Element('div', { class: 'header-transaction-amount-wrapper', children: $amount });
 
-  const $headerTransactionWrapper = Element('div', { children: [$buttonsWrapper, $amountWrapper] });
+  const $headerTransactionWrapper = Element('div', { class: 'header-transaction-content', children: [$buttonsWrapper, $amountWrapper] });
 
   $recipeButton.addEventListener('click', () => handleCategory({ button: $recipeButton, type: 'recipe' }));
   $expenseButton.addEventListener('click', () => handleCategory({ button: $expenseButton, type: 'expense' }));

@@ -1,0 +1,36 @@
+.numeric-keyboard-wrapper-external {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-white-50);
+  border-radius: 9px;
+  border: 1px solid #cfcfcf;
+}
+
+.numeric-keyboard-wrapper-internal {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: flex-end;
+}
+
+.numeric-keyboard-key {
+  width: 21vw;
+  height: 21vw;
+  background-color: var(--color-white-50);
+  border-radius: 21vw;
+  border: 3px solid var(--color-blue-50);
+  font-size: 40px;
+  color: var(--color-blue-50);
+  margin: 3vw;
+}
+
+.numeric-keyboard-key-backspace {
+  width: 21vw;
+  height: 21vw;
+  background-color: var(--color-white-50);
+  border: none;
+  font-size: 28px;
+  color: var(--color-blue-50);
+  margin: 3vw;
+}
