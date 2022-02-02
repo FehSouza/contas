@@ -1,6 +1,6 @@
 import { Home } from './pages/Home/index.js';
 import { Wallets } from './pages/Wallets/index.js';
-import { AddTransaction } from './pages/AddTransaction/index.js';
+import { AddTransactionValue } from './pages/AddTransactionValue/index.js';
 import { Navbar } from './components/Navbar/index.js';
 import { Element } from './components/shared/Element/index.js';
 
@@ -22,7 +22,7 @@ const handleNavigationWallets = () => {
 };
 
 const handleNavigationAddTransaction = () => {
-  const $addTransaction = AddTransaction();
+  const $addTransaction = AddTransactionValue();
   $content.innerHTML = '';
   $content.appendChild($addTransaction);
 };

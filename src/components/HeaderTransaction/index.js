@@ -11,34 +11,26 @@ const categories = {
   transfer: 'header-transaction-amount-transfer',
 };
 
-export const HeaderTransaction = (amount) => {
+export const HeaderTransaction = () => {
   const $recipeButton = Button({ title: 'Receita', class: 'header-transaction-button' });
   const $expenseButton = Button({ title: 'Despesa', class: ['header-transaction-button', 'button-on'] });
   const $transferButton = Button({ title: 'Transferência', class: ['header-transaction-button', 'transfer-button'] });
 
-  const handleCategory = ({ button, type }) => {
+  const handleCategory = (button) => {
     $recipeButton.classList.remove('button-on');
     $expenseButton.classList.remove('button-on');
     $transferButton.classList.remove('button-on');
     button.classList.add('button-on');
-    $amount.classList.remove(categories.recipe, categories.expense, categories.transfer);
-    $amount.classList.add(categories[type]);
   };
 
-  const $buttonsWrapper = Element('div', {
-    class: 'header-transaction-buttons-wrapper',
+  const $headerTransactionWrapper = Element('div', {
+    class: 'header-transaction-content',
     children: [$recipeButton, $expenseButton, $transferButton],
   });
 
-  const $amount = Element('h2', { class: 'header-transaction-amount', children: formatMoney(amount) });
-
-  const $amountWrapper = Element('div', { class: 'header-transaction-amount-wrapper', children: $amount });
-
-  const $headerTransactionWrapper = Element('div', { class: 'header-transaction-content', children: [$buttonsWrapper, $amountWrapper] });
-
-  $recipeButton.addEventListener('click', () => handleCategory({ button: $recipeButton, type: 'recipe' }));
-  $expenseButton.addEventListener('click', () => handleCategory({ button: $expenseButton, type: 'expense' }));
-  $transferButton.addEventListener('click', () => handleCategory({ button: $transferButton, type: 'transfer' }));
+  $recipeButton.addEventListener('click', () => handleCategory($recipeButton));
+  $expenseButton.addEventListener('click', () => handleCategory($expenseButton));
+  $transferButton.addEventListener('click', () => handleCategory($transferButton));
 
   return $headerTransactionWrapper;
 };
