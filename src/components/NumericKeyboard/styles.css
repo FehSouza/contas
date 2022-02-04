@@ -41,7 +41,7 @@
   margin: 3.7vw;
 }
 
-.header-transaction-amount {
+.transaction-amount {
   width: 100%;
   height: 170px;
   font-size: 34px;
@@ -51,14 +51,14 @@
   color: var(--color-red-50);
 }
 
-.header-transaction-amount-recipe {
+.transaction-amount-recipe {
   color: var(--color-green-50);
 }
 
-.header-transaction-amount-expense {
+.transaction-amount-expense {
   color: var(--color-red-50);
 }
 
-.header-transaction-amount-transfer {
+.transaction-amount-transfer {
   color: var(--color-blue-50);
 }

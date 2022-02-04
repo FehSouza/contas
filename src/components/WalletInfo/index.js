@@ -5,7 +5,7 @@ import { formatMoney } from '../../utils/currency/index.js';
 
 importCSS('./src/components/WalletInfo/styles.css');
 
-export const InfoWallet = ({ title, user, amount }) => {
+export const InfoWallet = ({ title, user, amount, classes }) => {
   const $icon = Element('div', { class: 'wallet-icon', children: Icon('wallet', 'fa-wallet-icon') });
 
   const $title = Element('h3', { class: 'wallet-title', children: title });
@@ -16,5 +16,10 @@ export const InfoWallet = ({ title, user, amount }) => {
   const $amount = Element('span', { class: 'wallet-amount', children: value });
 
   const $walletWrapper = Element('div', { class: 'wallet-wrapper', children: [$icon, $titleAndUser, $amount] });
+
+  if (classes) {
+    $walletWrapper.classList.add(`wallet-wrapper-button`)
+  }
+
   return $walletWrapper;
 };

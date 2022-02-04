@@ -1,15 +1,8 @@
 import { Element } from '../shared/Element/index.js';
 import { Button } from '../shared/Button/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
-import { formatMoney } from '../../utils/currency/index.js';
 
 importCSS('./src/components/HeaderTransaction/styles.css');
-
-const categories = {
-  recipe: 'header-transaction-amount-recipe',
-  expense: 'header-transaction-amount-expense',
-  transfer: 'header-transaction-amount-transfer',
-};
 
 export const HeaderTransaction = () => {
   const $recipeButton = Button({ title: 'Receita', class: 'header-transaction-button' });

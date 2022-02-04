@@ -17,7 +17,7 @@ export const AddTransactionValue = () => {
 
   const $continueButton = Button({
     title: 'Continuar',
-    class: 'header-transaction-button-continue',
+    class: 'add-transaction-button-continue',
     onClick: () => handleNavigationAddTransactionInfo(),
   });
 

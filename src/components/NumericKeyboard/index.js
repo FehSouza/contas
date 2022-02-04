@@ -6,8 +6,8 @@ import { formatMoney } from '../../utils/currency/index.js';
 importCSS('./src/components/NumericKeyboard/styles.css');
 
 export const NumericKeyboard = () => {
-  const $amount = Element('h2', { class: 'header-transaction-amount', children: formatMoney(0) });
-  const $amountWrapper = Element('div', { class: 'header-transaction-amount-wrapper', children: $amount });
+  const $amount = Element('h2', { class: 'transaction-amount', children: formatMoney(0) });
+  const $amountWrapper = Element('div', { class: 'transaction-amount-wrapper', children: $amount });
 
   const $keyboardWrapperInternal = Element('div', { class: 'numeric-keyboard-wrapper-internal' });
   const $keyboardWrapperExternal = Element('div', {
@@ -22,10 +22,16 @@ export const NumericKeyboard = () => {
 
   let value = '';
   const valueConvert = (elem) => {
-    value += elem;
+    elem === $keyBackspace ? (value = value.slice(0, value.length - 1)) : (value += elem);
     const number = (Number(value) / 100).toFixed(2);
+
+    let amount = {
+      value: number,
+    };
+    localStorage.setItem('amount', JSON.stringify(amount));
+
     $amountWrapper.innerHTML = '';
-    const $amount = Element('h2', { class: 'header-transaction-amount', children: formatMoney(number) });
+    const $amount = Element('h2', { class: 'transaction-amount', children: formatMoney(number) });
     $amountWrapper.appendChild($amount);
   };
 
@@ -35,7 +41,11 @@ export const NumericKeyboard = () => {
     $keyboardWrapperInternal.appendChild($key);
   }
 
-  const $keyBackspace = Button({ class: 'numeric-keyboard-key-backspace', icon: 'backspace' });
+  const $keyBackspace = Button({
+    class: 'numeric-keyboard-key-backspace',
+    icon: 'backspace',
+    onClick: () => valueConvert($keyBackspace),
+  });
   $keyboardWrapperInternal.appendChild($keyBackspace);
 
   return $keyboardContent;
