@@ -1,11 +1,11 @@
 import { Element } from '../Element/index.js';
 import { Icon } from '../Icon/index.js';
 
-export const Button = ({ title, icon, ...properties }) => {
+export const Button = ({ title, icon, iconProps, ...properties }) => {
   const children = [];
 
   if (title) children.push(title);
-  if (icon) children.push(Icon(icon));
+  if (icon) children.push(Icon(icon, iconProps));
 
   const $button = Element('button', { ...properties, children });
 

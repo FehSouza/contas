@@ -6,6 +6,7 @@ export const Icon = (icon, classes) => {
   if (icon === 'wallet') $icon.classList.add('fas', 'fa-wallet', classes);
   if (icon === 'backspace') $icon.classList.add('fas', 'fa-backspace', classes);
   if (icon === 'delete') $icon.classList.add('fas', 'fa-times', classes);
+  if (icon === 'category') $icon.classList.add('fas', 'fa-list', classes);
 
   return $icon;
 };
