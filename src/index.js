@@ -3,6 +3,7 @@ import { Wallets } from './pages/Wallets/index.js';
 import { AddTransactionValue } from './pages/AddTransactionValue/index.js';
 import { Navbar } from './components/Navbar/index.js';
 import { Element } from './components/shared/Element/index.js';
+import { store } from './store/index.js';
 
 const $container = document.querySelector('.container');
 
@@ -22,6 +23,7 @@ const handleNavigationWallets = () => {
 };
 
 const handleNavigationAddTransaction = () => {
+  store.setTypeTransaction('expense');
   const $addTransaction = AddTransactionValue();
   $content.innerHTML = '';
   $content.appendChild($addTransaction);

@@ -15,6 +15,7 @@ const CATEGORY_INFO_MOCK = {};
 
 export const AddTransactionInfo = () => {
   const handleNavigationDelete = () => {
+    store.setTypeTransaction('expense');
     const $addTransactionValue = AddTransactionValue();
     $addTransactionContent.innerHTML = '';
     $addTransactionContent.appendChild($addTransactionValue);
