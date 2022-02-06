@@ -6,6 +6,7 @@ import { HeaderTransaction } from '../../components/HeaderTransaction/index.js';
 import { AddTransactionValue } from '../AddTransactionValue/index.js';
 import { InfoWallet } from '../../components/WalletInfo/index.js';
 import { CategoryInfo } from '../../components/CategoryInfo/index.js';
+import { store } from '../../store/index.js';
 
 importCSS('./src/pages/AddTransactionInfo/styles.css');
 
@@ -24,8 +25,7 @@ export const AddTransactionInfo = () => {
     icon: 'delete',
     onClick: () => handleNavigationDelete(),
   });
-  const value = formatMoney(JSON.parse(localStorage.getItem('amount')).value);
-  const $value = Element('span', { class: 'transaction-value', children: value });
+  const $value = Element('span', { class: 'transaction-value', children: formatMoney(store.getTransactionAmount()) });
   const $valueWrapper = Element('div', { class: 'transaction-value-wrapper', children: $value });
   const $boxInvisible = Element('div', { class: 'box-invisible' });
 

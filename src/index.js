@@ -29,8 +29,7 @@ const handleNavigationAddTransaction = () => {
 
 $content.appendChild($home);
 
-const $navbar = Navbar(handleNavigationHome, handleNavigationWallets, handleNavigationAddTransaction);
-const $bottom = Element('div', { class: 'navbar', children: $navbar });
+const $navbar = Navbar({ handleNavigationHome, handleNavigationAddTransaction, handleNavigationWallets });
 
 $container.appendChild($content);
-$container.appendChild($bottom);
+$container.appendChild($navbar);

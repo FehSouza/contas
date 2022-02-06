@@ -1,0 +1,21 @@
+.transaction-amount {
+  width: 100%;
+  height: 170px;
+  font-size: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-red-50);
+}
+
+.transaction-amount-recipe {
+  color: var(--color-green-50);
+}
+
+.transaction-amount-expense {
+  color: var(--color-red-50);
+}
+
+.transaction-amount-transfer {
+  color: var(--color-blue-50);
+}
