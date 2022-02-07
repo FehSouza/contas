@@ -2,11 +2,12 @@ import { Element } from '../../components/shared/Element/index.js';
 import { Button } from '../../components/shared/Button/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { formatMoney } from '../../utils/currency/index.js';
+import { store } from '../../store/index.js';
 import { HeaderTransaction } from '../../components/HeaderTransaction/index.js';
 import { AddTransactionValue } from '../AddTransactionValue/index.js';
 import { InfoWallet } from '../../components/WalletInfo/index.js';
 import { CategoryInfo } from '../../components/CategoryInfo/index.js';
-import { store } from '../../store/index.js';
+import { Date } from '../../components/Date/index.js';
 
 importCSS('./src/pages/AddTransactionInfo/styles.css');
 
@@ -16,9 +17,8 @@ const CATEGORY_INFO_MOCK = {};
 export const AddTransactionInfo = () => {
   const handleNavigationDelete = () => {
     store.setTypeTransaction('expense');
-    const $addTransactionValue = AddTransactionValue();
-    $addTransactionContent.innerHTML = '';
-    $addTransactionContent.appendChild($addTransactionValue);
+    $addTransactionContainer.innerHTML = '';
+    $addTransactionContainer.appendChild(AddTransactionValue());
   };
 
   const $deleteButton = Button({
@@ -37,10 +37,15 @@ export const AddTransactionInfo = () => {
 
   const $walletInfo = InfoWallet(WALLET_INFO_MOCK);
   const $categoryInfo = CategoryInfo(CATEGORY_INFO_MOCK);
+  const $date = Date();
 
   const $addTransactionContent = Element('div', {
     class: 'add-transaction-content-info',
     children: [HeaderTransaction(), $valueContent, $walletInfo, $categoryInfo],
   });
-  return $addTransactionContent;
+  const $addTransactionContainer = Element('div', {
+    class: 'add-transaction-container-info',
+    children: [$addTransactionContent, $date],
+  });
+  return $addTransactionContainer;
 };
