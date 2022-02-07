@@ -10,7 +10,7 @@ import { store } from '../../store/index.js';
 
 importCSS('./src/pages/AddTransactionInfo/styles.css');
 
-const WALLET_INFO_MOCK = { title: 'NuBank', user: 'Raul', amount: 10000, classes: 'wallet' };
+const WALLET_INFO_MOCK = { classes: 'wallet' };
 const CATEGORY_INFO_MOCK = {};
 
 export const AddTransactionInfo = () => {
