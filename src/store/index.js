@@ -11,7 +11,14 @@ class Store {
 
   getTypeTransaction = () => this._state.typeTransaction;
   setTypeTransaction = (value) => (this._state.typeTransaction = value);
+
+  getStatusInstallment = () => this._state.statusInstallment;
+  setStatusInstallment = (value) => (this._state.statusInstallment = value);
 }
 
-const inicialStore = { transactionAmount: 0, typeTransaction: 'expense' };
+const transactionAmount = 0;
+const typeTransaction = 'expense';
+const statusInstallment = 'disabled'
+
+const inicialStore = { transactionAmount, typeTransaction, statusInstallment };
 export const store = new Store(inicialStore);

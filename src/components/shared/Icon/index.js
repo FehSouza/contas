@@ -7,6 +7,7 @@ export const Icon = (icon, classes) => {
   if (icon === 'backspace') $icon.classList.add('fas', 'fa-backspace', classes);
   if (icon === 'delete') $icon.classList.add('fas', 'fa-times', classes);
   if (icon === 'category') $icon.classList.add('fas', 'fa-list', classes);
+  if (icon === 'check') $icon.classList.add('fas', 'fa-check', classes);
 
   return $icon;
 };

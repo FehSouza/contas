@@ -8,6 +8,7 @@ import { AddTransactionValue } from '../AddTransactionValue/index.js';
 import { InfoWallet } from '../../components/WalletInfo/index.js';
 import { CategoryInfo } from '../../components/CategoryInfo/index.js';
 import { Date } from '../../components/Date/index.js';
+import { Installment } from '../../components/Installment/index.js';
 
 importCSS('./src/pages/AddTransactionInfo/styles.css');
 
@@ -38,6 +39,7 @@ export const AddTransactionInfo = () => {
   const $walletInfo = InfoWallet(WALLET_INFO_MOCK);
   const $categoryInfo = CategoryInfo(CATEGORY_INFO_MOCK);
   const $date = Date();
+  const $installment = Installment();
 
   const $addTransactionContent = Element('div', {
     class: 'add-transaction-content-info',
@@ -45,7 +47,7 @@ export const AddTransactionInfo = () => {
   });
   const $addTransactionContainer = Element('div', {
     class: 'add-transaction-container-info',
-    children: [$addTransactionContent, $date],
+    children: [$addTransactionContent, $date, $installment],
   });
   return $addTransactionContainer;
 };
