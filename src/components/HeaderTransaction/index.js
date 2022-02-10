@@ -10,9 +10,12 @@ export const HeaderTransaction = (updateValue) => {
   const $expenseButton = Button({ title: 'Despesa', class: ['header-transaction-button'] });
   const $transferButton = Button({ title: 'Transferência', class: ['header-transaction-button', 'transfer-button'] });
 
-  if (store.getTypeTransaction() === 'recipe') $recipeButton.classList.add('button-on');
-  if (store.getTypeTransaction() === 'expense') $expenseButton.classList.add('button-on');
-  if (store.getTypeTransaction() === 'transfer') $transferButton.classList.add('button-on');
+  const updateTab = (tab) => {
+    if (tab === 'recipe') $recipeButton.classList.add('button-on');
+    if (tab === 'expense') $expenseButton.classList.add('button-on');
+    if (tab === 'transfer') $transferButton.classList.add('button-on');
+  };
+  updateTab(store.getTypeTransaction());
 
   const handleCategory = (button, typeTransaction) => {
     $recipeButton.classList.remove('button-on');

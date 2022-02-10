@@ -18,7 +18,7 @@ class Store {
 
 const transactionAmount = 0;
 const typeTransaction = 'expense';
-const statusInstallment = 'disabled'
+const statusInstallment = 'disabled';
 
 const inicialStore = { transactionAmount, typeTransaction, statusInstallment };
 export const store = new Store(inicialStore);

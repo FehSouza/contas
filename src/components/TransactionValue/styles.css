@@ -5,7 +5,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--color-red-50);
 }
 
 .transaction-amount-recipe {

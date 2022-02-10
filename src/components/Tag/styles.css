@@ -1,0 +1,83 @@
+.tag-container {
+  width: 90%;
+  height: 30px;
+  border: 1px solid var(--color-blue-50A);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+
+.tag-container-new-tag {
+  width: 90%;
+  height: 60px;
+  border: 1px solid var(--color-blue-50A);
+  border-radius: 9px;
+  padding: 3px 0px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 100px;
+}
+
+.tag-content {
+  width: calc(100% - 3px - 3px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag-input {
+  width: calc(100% - 3px - 106px);
+  height: 22px;
+  border: none;
+  border-radius: 7px;
+  padding: 0;
+  outline: none;
+}
+
+.tag-button {
+  width: 106px;
+  height: 24px;
+  background-color: var(--color-white-50);
+  border: 1px solid var(--color-blue-50A);
+  border-radius: 7px;
+  padding: 0px;
+  font-size: 14px;
+  color: var(--color-blue-50);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.new-tag-content {
+  width: calc(100% - 3px - 3px);
+  display: flex;
+}
+
+.new-tag {
+  height: 22px;
+  background-color: var(--color-blue-50);
+  border: 1px solid var(--color-blue-50A);
+  border-radius: 7px;
+  padding: 0px 6px;
+  margin-right: 3px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--color-white-50);
+}
+
+.tag-button-delete {
+  background-color: var(--color-blue-50);
+  border: none;
+  margin-left: 8px;
+  padding: 0;
+}
+
+.tag-button-delete-icon {
+  color: var(--color-white-50);
+}
