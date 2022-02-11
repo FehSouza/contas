@@ -11,6 +11,7 @@ import { Date } from '../../components/Date/index.js';
 import { Installment } from '../../components/Installment/index.js';
 import { Tag } from '../../components/Tag/index.js';
 import { Comments } from '../../components/Comments/index.js';
+import { StatusAccount } from '../../components/StatusAccount/index.js';
 
 importCSS('./src/pages/AddTransactionInfo/styles.css');
 
@@ -42,8 +43,10 @@ export const AddTransactionInfo = () => {
   const $categoryInfo = CategoryInfo(CATEGORY_INFO_MOCK);
   const $date = Date();
   const $installment = Installment();
+  const $statusAccount = StatusAccount();
   const $tag = Tag();
   const $comments = Comments();
+  const $finishButton = Button({ class: 'transaction-value-button-finish', title: 'Concluir' });
 
   const $addTransactionContent = Element('div', {
     class: 'add-transaction-content-info',
@@ -51,7 +54,7 @@ export const AddTransactionInfo = () => {
   });
   const $addTransactionContainer = Element('div', {
     class: 'add-transaction-container-info',
-    children: [$addTransactionContent, $date, $installment, $tag, $comments],
+    children: [$addTransactionContent, $date, $installment, $statusAccount, $tag, $comments, $finishButton],
   });
   return $addTransactionContainer;
 };
