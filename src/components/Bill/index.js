@@ -12,17 +12,18 @@ const categories = {
   transport: 'color-yellow',
 };
 
-export const Bill = ({ category, title, wallet, amount, status }) => {
+export const Bill = ({ category, subcategory, wallet, amount, status }) => {
+  const statusText = status ? 'Pago' : 'Não pago';
   const $category = Element('div', { class: 'account-category' });
   if (category && categories[category]) $category.classList.add(categories[category]);
 
-  const $title = Element('span', { class: 'account-title', children: title });
+  const $title = Element('span', { class: 'account-title', children: subcategory });
   const $wallet = Element('span', { class: 'account-wallet', children: wallet });
   const $titleAndWallet = Element('div', { class: 'account-title-and-wallet', children: [$title, $wallet] });
 
   const value = formatMoney(amount);
   const $amount = Element('span', { class: 'account-value', children: value });
-  const $status = Element('span', { class: 'account-status', children: status });
+  const $status = Element('span', { class: 'account-status', children: statusText });
   const $valueAndStatus = Element('div', { class: 'account-value-and-status', children: [$amount, $status] });
 
   const $accountWrapper = Element('div', {

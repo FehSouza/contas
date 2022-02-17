@@ -15,9 +15,6 @@ import { StatusAccount } from '../../components/StatusAccount/index.js';
 
 importCSS('./src/pages/AddTransactionInfo/styles.css');
 
-const WALLET_INFO_MOCK = { classes: 'wallet' };
-const CATEGORY_INFO_MOCK = {};
-
 export const AddTransactionInfo = () => {
   const handleNavigationDelete = () => {
     store.setTypeTransaction('expense');
@@ -39,14 +36,33 @@ export const AddTransactionInfo = () => {
     children: [$deleteButton, $valueWrapper, $boxInvisible],
   });
 
-  const $walletInfo = InfoWallet(WALLET_INFO_MOCK);
-  const $categoryInfo = CategoryInfo(CATEGORY_INFO_MOCK);
-  const $date = Date();
+  let wallet;
+  let category;
+  let subcategory;
+  let date;
+  let status = false;
+
+  const setTitle = (newTitle) => (wallet = newTitle);
+  const setCategory = (newCategory) => (category = newCategory);
+  const setSubcategory = (newSubcategory) => (subcategory = newSubcategory);
+  const setDate = (newDate) => (date = newDate);
+  const setStatus = (newStatus) => (status = newStatus);
+
+  const $walletInfo = InfoWallet({ title: wallet, setTitle }, true);
+  const $categoryInfo = CategoryInfo({ category, subcategory, setCategory, setSubcategory });
+  const $date = Date(setDate);
   const $installment = Installment();
-  const $statusAccount = StatusAccount();
+  const $statusAccount = StatusAccount(setStatus);
   const $tag = Tag();
   const $comments = Comments();
-  const $finishButton = Button({ class: 'transaction-value-button-finish', title: 'Concluir' });
+
+  const $finishButton = Button({
+    class: 'transaction-value-button-finish',
+    title: 'Concluir',
+    onClick: () => {
+      store.addBill(date, { amount: store.getTransactionAmount(), category, subcategory, wallet, status });
+    },
+  });
 
   const $addTransactionContent = Element('div', {
     class: 'add-transaction-content-info',

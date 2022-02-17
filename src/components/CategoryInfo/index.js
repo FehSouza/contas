@@ -5,20 +5,31 @@ import { importCSS } from '../../utils/importCSS/index.js';
 
 importCSS('./src/components/CategoryInfo/styles.css');
 
-export const CategoryInfo = ({ categoryName, subcategoryName }) => {
+export const CategoryInfo = ({ category, subcategory, setCategory, setSubcategory }) => {
   const $icon = Element('div', { class: 'category-info-icon', children: Icon('category') });
 
-  const $name = Element('h3', { class: 'category-info-name', children: 'Selecione a Categoria' });
-  if (categoryName) $name.textContent = categoryName;
-  const $subName = Element('span', { class: 'category-info-sub-name' });
-  if (subcategoryName) $subName.textContent = subcategoryName;
-  const $nameAndSubName = Element('div', { class: 'category-info-name-sub-name', children: [$name, $subName] });
+  const $category = Element('h3', { class: 'category-info-name', children: 'Selecione a Categoria' });
+  if (category) $category.textContent = category;
+  const $subCategory = Element('span', { class: 'category-info-sub-name' });
+  if (subcategory) $subCategory.textContent = subcategory;
+  const $categoryAndSubcategory = Element('div', {
+    class: 'category-info-name-sub-name',
+    children: [$category, $subCategory],
+  });
 
-  const $categoryButton = Button({ class: 'category-button', icon: 'add', iconProps: 'category-info-button-icon' });
+  const $categoryButton = Button({
+    class: 'category-button',
+    icon: 'add',
+    iconProps: 'category-info-button-icon',
+    onClick: () => {
+      setCategory('food');
+      setSubcategory('restaurante');
+    },
+  });
 
   const $categoryContent = Element('div', {
     class: 'category-info-content',
-    children: [$icon, $nameAndSubName, $categoryButton],
+    children: [$icon, $categoryAndSubcategory, $categoryButton],
   });
   return $categoryContent;
 };

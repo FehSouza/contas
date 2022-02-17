@@ -39,6 +39,10 @@ export const Element = (type, properties) => {
       elem.addEventListener('keyup', properties[key]);
       continue;
     }
+    if (key.toLowerCase() === 'onchange') {
+      elem.addEventListener('change', properties[key]);
+      continue;
+    }
     elem.setAttribute(key, properties[key]);
   }
   return elem;

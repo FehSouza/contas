@@ -19,6 +19,7 @@
   font-family: 'Lato', sans-serif;
   font-size: 14px;
   color: var(--color-grey-100);
+  resize: none;
 }
 
 .quantity-characters {

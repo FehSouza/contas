@@ -13,6 +13,7 @@ const $home = Home();
 const $wallets = Wallets();
 
 const handleNavigationHome = () => {
+  const $home = Home();
   $content.innerHTML = '';
   $content.appendChild($home);
 };

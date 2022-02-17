@@ -20,6 +20,7 @@
 .installment-value {
   width: 100px;
   height: 40px;
+  background-color: var(--color-white-50);
   border: 1px solid var(--color-blue-50A);
   border-radius: 32px;
   font-family: 'Lato', sans-serif;
