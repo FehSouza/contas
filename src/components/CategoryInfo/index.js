@@ -12,10 +12,7 @@ export const CategoryInfo = ({ category, subcategory, setCategory, setSubcategor
   if (category) $category.textContent = category;
   const $subCategory = Element('span', { class: 'category-info-sub-name' });
   if (subcategory) $subCategory.textContent = subcategory;
-  const $categoryAndSubcategory = Element('div', {
-    class: 'category-info-name-sub-name',
-    children: [$category, $subCategory],
-  });
+  const $categoryAndSub = Element('div', { class: 'category-info-name-sub-name', children: [$category, $subCategory] });
 
   const $categoryButton = Button({
     class: 'category-button',
@@ -29,7 +26,7 @@ export const CategoryInfo = ({ category, subcategory, setCategory, setSubcategor
 
   const $categoryContent = Element('div', {
     class: 'category-info-content',
-    children: [$icon, $categoryAndSubcategory, $categoryButton],
+    children: [$icon, $categoryAndSub, $categoryButton],
   });
   return $categoryContent;
 };

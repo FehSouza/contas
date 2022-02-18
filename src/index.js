@@ -12,7 +12,7 @@ const $content = Element('div', { class: 'content' });
 const $home = Home();
 const $wallets = Wallets();
 
-const handleNavigationHome = () => {
+export const handleNavigationHome = () => {
   const $home = Home();
   $content.innerHTML = '';
   $content.appendChild($home);

@@ -12,6 +12,7 @@ import { Installment } from '../../components/Installment/index.js';
 import { Tag } from '../../components/Tag/index.js';
 import { Comments } from '../../components/Comments/index.js';
 import { StatusAccount } from '../../components/StatusAccount/index.js';
+import { handleNavigationHome } from '../../index.js';
 
 importCSS('./src/pages/AddTransactionInfo/styles.css');
 
@@ -42,13 +43,13 @@ export const AddTransactionInfo = () => {
   let date;
   let status = false;
 
-  const setTitle = (newTitle) => (wallet = newTitle);
+  const setWallet = (newWallet) => (wallet = newWallet);
   const setCategory = (newCategory) => (category = newCategory);
   const setSubcategory = (newSubcategory) => (subcategory = newSubcategory);
   const setDate = (newDate) => (date = newDate);
   const setStatus = (newStatus) => (status = newStatus);
 
-  const $walletInfo = InfoWallet({ title: wallet, setTitle }, true);
+  const $walletInfo = InfoWallet({ wallet, setWallet }, true);
   const $categoryInfo = CategoryInfo({ category, subcategory, setCategory, setSubcategory });
   const $date = Date(setDate);
   const $installment = Installment();
@@ -61,6 +62,7 @@ export const AddTransactionInfo = () => {
     title: 'Concluir',
     onClick: () => {
       store.addBill(date, { amount: store.getTransactionAmount(), category, subcategory, wallet, status });
+      handleNavigationHome();
     },
   });
 

@@ -7,7 +7,6 @@ importCSS('./src/components/StatusAccount/styles.css');
 
 export const StatusAccount = (setStatus) => {
   const $icon = Icon('check');
-
   let payed = false;
 
   const toggleButtons = () => {
@@ -26,8 +25,8 @@ export const StatusAccount = (setStatus) => {
   const $buttonTogglePay = Button({ class: 'button-toggle', onClick: toggleButtons });
   const $togglePay = Element('span', { class: ['toggle-pay', 'toggle-pay-pay'], children: 'Pago' });
   const $buttonToggleNoPay = Button({ class: 'button-toggle', onClick: toggleButtons });
-  const $toggleNoPay = Element('span', { class: 'toggle-pay', children: 'Não pago' });
   $buttonToggleNoPay.appendChild($icon);
+  const $toggleNoPay = Element('span', { class: 'toggle-pay', children: 'Não pago' });
 
   const $toggle = Element('div', {
     class: 'toggle-status-account',

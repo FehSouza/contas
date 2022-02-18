@@ -20,26 +20,21 @@ class Store {
     let newBills = [];
 
     if (hasDate) {
-      for (const item of this._state.bills) {
-        if (item.date === date) {
-          item.bills.push(bill);
-          newBills.push(item);
-        } else newBills.push(item);
-      }
-    } else {
-      newBills = [...this._state.bills];
-      newBills.push({ date, bills: [bill] });
-    }
+      newBills = this._state.bills.map((elem) => {
+        if (elem.date === date) return { ...elem, bills: [...elem.bills, bill] };
+        else return elem;
+      });
+    } else newBills = [...this._state.bills, { date, bills: [bill] }];
 
-    if (newBills.length > 1)
+    if (newBills.length > 1) {
       newBills.sort((a, b) => {
-        const [yearA, mouthA, dayA] = a.date.split('-').map(Number);
-        const [yearB, mouthB, dayB] = b.date.split('-').map(Number);
+        const [dayA, mouthA, yearA] = a.date.split('/').map(Number);
+        const [dayB, mouthB, yearB] = b.date.split('/').map(Number);
         const dateA = new Date(yearA, mouthA - 1, dayA);
         const dateB = new Date(yearB, mouthB - 1, dayB);
         return dateB - dateA;
       });
-
+    }
     this._state.bills = newBills;
   };
 }

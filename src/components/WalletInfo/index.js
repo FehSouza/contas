@@ -6,11 +6,11 @@ import { Button } from '../shared/Button/index.js';
 
 importCSS('./src/components/WalletInfo/styles.css');
 
-export const InfoWallet = ({ title, user, amount, setTitle }, isWallet) => {
+export const InfoWallet = ({ wallet, user, amount, setWallet }, isWallet) => {
   const $icon = Element('div', { class: 'wallet-icon', children: Icon('wallet', 'fa-wallet-icon') });
 
   const $title = Element('h3', { class: 'wallet-title', children: 'Selecione a Carteira' });
-  if (title) $title.textContent = title;
+  if (wallet) $title.textContent = wallet;
   const $user = Element('span', { class: 'wallet-user' });
   if (user) $user.textContent = user;
   const $titleAndUser = Element('div', { class: 'wallet-title-and-user', children: [$title, $user] });
@@ -19,7 +19,7 @@ export const InfoWallet = ({ title, user, amount, setTitle }, isWallet) => {
     class: 'wallet-button',
     icon: 'add',
     iconProps: 'wallet-info-button-icon',
-    onClick: () => setTitle('NuBank'),
+    onClick: () => setWallet('NuBank'),
   });
   const value = formatMoney(amount);
   const $amount = Element('span', { class: 'wallet-amount', children: $walletButton });

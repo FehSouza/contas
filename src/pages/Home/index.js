@@ -11,10 +11,13 @@ export const Home = () => {
 
   const $containerAccountsPerDay = Element('div', { class: 'accounts-per-day-container' });
 
-  if (store.getBills().length !== 0) {
+  if (store.getBills().length) {
     const $accountsDay = store.getBills().map((item) => AccountsDay(item));
     $accountsDay.forEach((elem) => $containerAccountsPerDay.appendChild(elem));
-  } else $containerAccountsPerDay.textContent = 'teste';
+  } else {
+    $containerAccountsPerDay.textContent = 'Não há nenhuma transação adicionada.';
+    $containerAccountsPerDay.classList.add('accounts-per-day-container-without-transaction');
+  }
 
   const $pageHome = Element('div', { class: 'home-page', children: [$header, $containerAccountsPerDay] });
   return $pageHome;
