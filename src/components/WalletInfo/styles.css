@@ -7,6 +7,7 @@
   padding: 16px 0px;
   box-sizing: border-box;
   position: relative;
+  animation: fromRight 300ms cubic-bezier(0, 0.02, 0.86, 1.15) forwards;
 }
 
 .wallet-wrapper-button {
@@ -16,6 +17,7 @@
   box-shadow: 0px 0px 6px var(--color-black-50A);
   padding: 16px 16px;
   box-sizing: border-box;
+  margin: 8px 0px;
 }
 
 .wallet-icon {

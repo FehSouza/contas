@@ -16,7 +16,7 @@ export const AddTransactionValue = () => {
   const handleNavigationAddTransactionInfo = () => {
     if (store.getTransactionAmount() === 0 || store.getTransactionAmount() === '0.00') return;
     $addTransactionContent.innerHTML = '';
-    $addTransactionContent.appendChild(AddTransactionInfo());
+    $addTransactionContent.appendChild(AddTransactionInfo({}));
   };
 
   const $transactionValue = TransactionValue();

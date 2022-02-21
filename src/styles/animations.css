@@ -1,0 +1,26 @@
+@keyframes appear {
+  from {
+    background-color: var(--color-blue-0A);
+  }
+  to {
+    background-color: var(--color-blue-50A);
+  }
+}
+
+@keyframes scaleDown {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes fromRight {
+  0% {
+    transform: translateX(1000px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

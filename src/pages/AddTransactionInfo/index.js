@@ -13,10 +13,11 @@ import { Tag } from '../../components/Tag/index.js';
 import { Comments } from '../../components/Comments/index.js';
 import { StatusAccount } from '../../components/StatusAccount/index.js';
 import { handleNavigationHome } from '../../index.js';
+import { SelectWallet } from '../../components/modals/SelectWallet/index.js';
 
 importCSS('./src/pages/AddTransactionInfo/styles.css');
 
-export const AddTransactionInfo = () => {
+export const AddTransactionInfo = ({ walletInfo }) => {
   const handleNavigationDelete = () => {
     store.setTypeTransaction('expense');
     $addTransactionContainer.innerHTML = '';
@@ -43,13 +44,19 @@ export const AddTransactionInfo = () => {
   let date;
   let status = false;
 
-  const setWallet = (newWallet) => (wallet = newWallet);
   const setCategory = (newCategory) => (category = newCategory);
   const setSubcategory = (newSubcategory) => (subcategory = newSubcategory);
   const setDate = (newDate) => (date = newDate);
   const setStatus = (newStatus) => (status = newStatus);
 
-  const $walletInfo = InfoWallet({ wallet, setWallet }, true);
+  let $walletInfo;
+  if (walletInfo) {
+    $walletInfo = InfoWallet(walletInfo, true, true, () => {
+      const selectWallet = SelectWallet();
+      document.body.appendChild(selectWallet);
+    });
+    wallet = walletInfo.wallet;
+  } else $walletInfo = InfoWallet({}, true);
   const $categoryInfo = CategoryInfo({ category, subcategory, setCategory, setSubcategory });
   const $date = Date(setDate);
   const $installment = Installment();
@@ -61,8 +68,12 @@ export const AddTransactionInfo = () => {
     class: 'transaction-value-button-finish',
     title: 'Concluir',
     onClick: () => {
-      store.addBill(date, { amount: store.getTransactionAmount(), category, subcategory, wallet, status });
-      handleNavigationHome();
+      console.log(wallet);
+      if (date && category && wallet) {
+        store.addBill(date, { amount: store.getTransactionAmount(), category, subcategory, wallet, status });
+        console.log(store.addBill());
+        handleNavigationHome();
+      }
     },
   });
 
