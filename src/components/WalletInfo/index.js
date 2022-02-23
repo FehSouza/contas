@@ -20,7 +20,8 @@ export const InfoWallet = ({ wallet, user, amount }, isWallet, isButton, funcBut
     class: 'wallet-button',
     icon: 'add',
     iconProps: 'wallet-info-button-icon',
-    onClick: () => {
+    onClick: (event) => {
+      event.stopPropagation();
       const selectWallet = SelectWallet(true);
       document.body.appendChild(selectWallet);
     },

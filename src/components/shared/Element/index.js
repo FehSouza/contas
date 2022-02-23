@@ -43,6 +43,14 @@ export const Element = (type, properties) => {
       elem.addEventListener('change', properties[key]);
       continue;
     }
+    if (key.toLowerCase() === 'mouseover') {
+      elem.addEventListener('mouseover', properties[key]);
+      continue;
+    }
+    if (key.toLowerCase() === 'mouseout') {
+      elem.addEventListener('mouseout', properties[key]);
+      continue;
+    }
     elem.setAttribute(key, properties[key]);
   }
   return elem;

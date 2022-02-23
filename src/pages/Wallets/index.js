@@ -5,6 +5,7 @@ import { WalletsList } from '../../components/WalletsList/index.js';
 import { GoalsList } from '../../components/GoalsList/index.js';
 import { store } from '../../store/index.js';
 import { Button } from '../../components/shared/Button/index.js';
+import { AddWallet } from '../../components/modals/AddWallet/index.js';
 
 importCSS('./src/pages/Wallets/styles.css');
 
@@ -18,7 +19,14 @@ export const Wallets = () => {
 
   const $titleWallets = Element('span', { class: 'wallets-title', children: 'Carteiras' });
   const $walletsListWrapper = WalletsList(store.getWallets());
-  const $addWalletButton = Button({ title: 'Nova carteira', class: 'add-wallet-button' });
+  const $addWalletButton = Button({
+    title: 'Nova carteira',
+    class: 'add-wallet-button',
+    onClick: () => {
+      const addWallet = AddWallet();
+      document.body.appendChild(addWallet);
+    },
+  });
   const $walletsContent = Element('div', {
     class: 'wallets-content-page',
     children: [$titleWallets, $walletsListWrapper, $addWalletButton],

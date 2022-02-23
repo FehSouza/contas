@@ -28,3 +28,8 @@
   color: var(--color-white-50);
   margin-top: 32px;
 }
+
+.goals-list-button:hover {
+  cursor: pointer;
+  filter: brightness(1.07);
+}

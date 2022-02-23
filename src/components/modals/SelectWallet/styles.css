@@ -41,6 +41,7 @@
   background-image: linear-gradient(to bottom, var(--color-white-50), var(--color-blue-50A));
   border-radius: 0 0 9px 9px;
   margin-top: -8px;
+  margin-bottom: 8px;
   animation: go-bottom 500ms linear forwards;
   display: flex;
   flex-direction: column;

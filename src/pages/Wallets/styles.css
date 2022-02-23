@@ -65,3 +65,8 @@
   color: var(--color-white-50);
   margin-top: 16px;
 }
+
+.add-wallet-button:hover {
+  cursor: pointer;
+  filter: brightness(1.07);
+}

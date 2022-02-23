@@ -9,6 +9,7 @@ export const WalletsList = (props, isModal, isButton, funcButton, animation) => 
 
   for (const item of props) {
     const $infoWallet = InfoWallet(item, isModal, isButton, () => funcButton(item.id), animation);
+    $infoWallet.classList.add('wallet-list-item')
     $walletListWrapper.appendChild($infoWallet);
   }
 

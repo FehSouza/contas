@@ -1,10 +1,10 @@
 import { Element } from '../../shared/Element/index.js';
+import { Button } from '../../shared/Button/index.js';
 import { importCSS } from '../../../utils/importCSS/index.js';
 import { WalletsList } from '../../WalletsList/index.js';
 import { InfoWallet } from '../../WalletInfo/index.js';
-import { store } from '../../../store/index.js';
 import { AddTransactionInfo } from '../../../pages/AddTransactionInfo/index.js';
-import { Button } from '../../shared/Button/index.js';
+import { store } from '../../../store/index.js';
 
 importCSS('./src/components/modals/SelectWallet/styles.css');
 
@@ -55,7 +55,7 @@ export const SelectWallet = (add) => {
         });
         $addWalletWrapper.removeChild($addNewWallet);
         store.setAddWalletStatus(false);
-        $listWallets.innerHTML = '';
+        $listWallets.remove();
         $listWallets = WalletsList(store.getWallets(), true, true, addWalletClick, true);
         $content.appendChild($listWallets);
         $titleInput.value = '';
@@ -74,16 +74,17 @@ export const SelectWallet = (add) => {
   const $addWalletWrapper = Element('div', { class: 'add-wallet-wrapper', children: $addWallet });
 
   if (add) {
-    // $addWalletWrapper.appendChild($addNewWallet);
-    // store.setAddWalletStatus(true);
-    console.log('teste');
+    $addWalletWrapper.appendChild($addNewWallet);
+    store.setAddWalletStatus(true);
   }
 
   const $content = Element('div', {
     class: 'select-wallet-content',
-    children: [$addWalletWrapper, $listWallets],
+    children: [$addWalletWrapper],
     onClick: (event) => event.stopPropagation(),
   });
+
+  if (store.getWallets().length) $content.appendChild($listWallets);
 
   const $container = Element('div', {
     class: 'select-wallet-container',

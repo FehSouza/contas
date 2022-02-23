@@ -7,6 +7,10 @@
   position: relative;
 }
 
+.navbar-page > .active {
+  color: red;
+}
+
 .navbar-button-add-account {
   background-color: var(--color-blue-50);
   width: 56px;
@@ -15,7 +19,14 @@
   border: none;
   z-index: 1;
   position: absolute;
-  top: -30%;
+  top: -20px;
+  transition-duration: 300ms;
+}
+
+.navbar-button-add-account:hover {
+  cursor: pointer;
+  filter: brightness(1.07);
+  transform: rotate(180deg);
 }
 
 .navbar-button-home,
@@ -24,8 +35,19 @@
   background-color: var(--color-white-50);
 }
 
+.navbar-button-home:hover,
+.navbar-button-wallet:hover {
+  cursor: pointer;
+}
+
 .icon-add-account,
 .fa-home,
 .fa-wallet {
   font-size: 22px;
+}
+
+.fa-home:hover,
+.fa-wallet:hover {
+  color: var(--color-grey-100);
+  transition-duration: 300ms;
 }

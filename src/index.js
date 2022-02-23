@@ -15,6 +15,7 @@ export const handleNavigationHome = () => {
   const $home = Home();
   $content.innerHTML = '';
   $content.appendChild($home);
+  
 };
 
 const handleNavigationWallets = () => {
