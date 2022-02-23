@@ -24,3 +24,12 @@
     transform: translateX(0);
   }
 }
+
+@keyframes go-bottom {
+  0% {
+    transform: translateY(-76px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

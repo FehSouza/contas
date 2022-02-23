@@ -3,15 +3,10 @@ import { importCSS } from '../../utils/importCSS/index.js';
 import { Header } from '../../components/Header/index.js';
 import { WalletsList } from '../../components/WalletsList/index.js';
 import { GoalsList } from '../../components/GoalsList/index.js';
+import { store } from '../../store/index.js';
+import { Button } from '../../components/shared/Button/index.js';
 
 importCSS('./src/pages/Wallets/styles.css');
-
-const WALLETS_MOCK = [
-  { title: 'NuBank', user: 'Raul', amount: 10000 },
-  { title: 'Santander', user: 'Fernanda', amount: 4500 },
-  { title: 'Carteira', user: 'Raul', amount: 150 },
-  { title: 'Itau', user: 'Fernanda', amount: 0.8 },
-];
 
 const GOALS_MOCK = [
   { title: 'Reserva', amount: 200 },
@@ -20,12 +15,25 @@ const GOALS_MOCK = [
 
 export const Wallets = () => {
   const $header = Header(100000);
-  const $walletsListWrapper = WalletsList(WALLETS_MOCK);
+
+  const $titleWallets = Element('span', { class: 'wallets-title', children: 'Carteiras' });
+  const $walletsListWrapper = WalletsList(store.getWallets());
+  const $addWalletButton = Button({ title: 'Nova carteira', class: 'add-wallet-button' });
+  const $walletsContent = Element('div', {
+    class: 'wallets-content-page',
+    children: [$titleWallets, $walletsListWrapper, $addWalletButton],
+  });
+  $walletsListWrapper.classList.add('wallets-list-wrapper-page');
+
+  if (store.getWallets().length < 1) {
+    $walletsListWrapper.textContent = 'Não há nenhuma carteira adicionada.';
+  }
+
   const $goalsListWrapper = GoalsList(GOALS_MOCK);
 
   const $walletContent = Element('div', {
     class: 'wallet-content',
-    children: [$walletsListWrapper, $goalsListWrapper],
+    children: [$walletsContent, $goalsListWrapper],
   });
   const $walletContainer = Element('div', {
     class: 'wallet-container',

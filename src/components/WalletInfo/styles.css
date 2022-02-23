@@ -7,6 +7,11 @@
   padding: 16px 0px;
   box-sizing: border-box;
   position: relative;
+  z-index: 2;
+}
+
+.wallet-wrapper-animation {
+  width: calc(90% + 14px);
   animation: fromRight 300ms cubic-bezier(0, 0.02, 0.86, 1.15) forwards;
 }
 

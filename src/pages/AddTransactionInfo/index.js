@@ -38,7 +38,6 @@ export const AddTransactionInfo = ({ walletInfo }) => {
     children: [$deleteButton, $valueWrapper, $boxInvisible],
   });
 
-  let wallet;
   let category;
   let subcategory;
   let date;
@@ -50,13 +49,19 @@ export const AddTransactionInfo = ({ walletInfo }) => {
   const setStatus = (newStatus) => (status = newStatus);
 
   let $walletInfo;
+  let wallet;
   if (walletInfo) {
     $walletInfo = InfoWallet(walletInfo, true, true, () => {
       const selectWallet = SelectWallet();
       document.body.appendChild(selectWallet);
     });
     wallet = walletInfo.wallet;
-  } else $walletInfo = InfoWallet({}, true);
+  } else
+    $walletInfo = InfoWallet({ wallet: 'Selecione a Carteira' }, true, true, () => {
+      const selectWallet = SelectWallet();
+      document.body.appendChild(selectWallet);
+    });
+
   const $categoryInfo = CategoryInfo({ category, subcategory, setCategory, setSubcategory });
   const $date = Date(setDate);
   const $installment = Installment();
@@ -68,10 +73,8 @@ export const AddTransactionInfo = ({ walletInfo }) => {
     class: 'transaction-value-button-finish',
     title: 'Concluir',
     onClick: () => {
-      console.log(wallet);
       if (date && category && wallet) {
         store.addBill(date, { amount: store.getTransactionAmount(), category, subcategory, wallet, status });
-        console.log(store.addBill());
         handleNavigationHome();
       }
     },

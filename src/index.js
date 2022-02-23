@@ -10,7 +10,6 @@ const $container = document.querySelector('.container');
 const $content = Element('div', { class: 'content' });
 
 const $home = Home();
-const $wallets = Wallets();
 
 export const handleNavigationHome = () => {
   const $home = Home();
@@ -19,6 +18,7 @@ export const handleNavigationHome = () => {
 };
 
 const handleNavigationWallets = () => {
+  const $wallets = Wallets();
   $content.innerHTML = '';
   $content.appendChild($wallets);
 };

@@ -4,15 +4,15 @@ import { InfoWallet } from '../WalletInfo/index.js';
 
 importCSS('./src/components/WalletsList/styles.css');
 
-export const WalletsList = (props, isModal, button, funcButton) => {
+export const WalletsList = (props, isModal, isButton, funcButton, animation) => {
   const $walletListWrapper = Element('div', { class: 'wallets-list-wrapper' });
 
   for (const item of props) {
-    const $infoWallet = InfoWallet(item, isModal, button, () => funcButton(item.id) );
+    const $infoWallet = InfoWallet(item, isModal, isButton, () => funcButton(item.id), animation);
     $walletListWrapper.appendChild($infoWallet);
   }
 
-  if (isModal) $walletListWrapper.classList.add('wallets-list-wrapper-button')
+  if (isModal) $walletListWrapper.classList.add('wallets-list-wrapper-button');
 
   return $walletListWrapper;
 };

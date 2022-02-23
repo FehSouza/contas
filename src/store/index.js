@@ -12,8 +12,8 @@ class Store {
   getTransactionAmount = () => this._state.transactionAmount;
   setTransactionAmount = (value) => (this._state.transactionAmount = value);
 
-  addWallet = (newWallets) => (this._state.wallets = [...this._state.wallets, newWallets]);
   getWallets = () => this._state.wallets;
+  addWallet = (newWallets) => (this._state.wallets = [...this._state.wallets, newWallets]);
   getWallet = () => this._state.wallet;
   setWallet = (id) => {
     const [wallet] = this._state.wallets.filter((elem) => {
@@ -47,22 +47,17 @@ class Store {
     }
     this._state.bills = newBills;
   };
+
+  getAddWalletStatus = () => this._state.addWalletStatus;
+  setAddWalletStatus = (newStatus) => (this._state.addWalletStatus = newStatus);
 }
 
 const typeTransaction = 'expense';
 const transactionAmount = 0;
 const bills = [];
-const wallets = [
-  { wallet: 'NuBank', user: 'Raul', amount: 100, id: Math.random().toString(36).slice(2, 11) },
-  { wallet: 'Santander', user: 'Fernanda', amount: 100, id: Math.random().toString(36).slice(2, 11) },
-  // { wallet: 'Santander', user: 'Fernanda', amount: 100, id: Math.random().toString(36).slice(2, 11) },
-  // { wallet: 'Santander', user: 'Fernanda', amount: 100, id: Math.random().toString(36).slice(2, 11) },
-  // { wallet: 'Santander', user: 'Fernanda', amount: 100, id: Math.random().toString(36).slice(2, 11) },
-  // { wallet: 'Santander', user: 'Fernanda', amount: 100, id: Math.random().toString(36).slice(2, 11) },
-  // { wallet: 'Santander', user: 'Fernanda', amount: 100, id: Math.random().toString(36).slice(2, 11) },
-  // { wallet: 'Santander', user: 'Fernanda', amount: 100, id: Math.random().toString(36).slice(2, 11) },
-];
+const wallets = [];
 const wallet = undefined;
+const addWalletStatus = false;
 
-const inicialStore = { typeTransaction, transactionAmount, bills, wallets, wallet };
+const inicialStore = { typeTransaction, transactionAmount, bills, wallets, wallet, addWalletStatus };
 export const store = new Store(inicialStore);
