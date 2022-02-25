@@ -13,6 +13,17 @@
   position: relative;
 }
 
+.category-info-content:hover,
+.category-button:hover {
+  cursor: pointer;
+  background-color: var(--color-blue-50A);
+  transition-duration: 300ms;
+}
+
+.category-info-content:hover {
+  filter: brightness(1.12);
+}
+
 .category-info-icon {
   width: 44px;
   height: 44px;

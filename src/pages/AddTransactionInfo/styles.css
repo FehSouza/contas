@@ -30,6 +30,15 @@
   padding: 0;
 }
 
+.fa-times {
+  transition-duration: 300ms;
+}
+
+.fa-times:hover {
+  cursor: pointer;
+  transform: rotate(180deg);
+}
+
 .transaction-value-wrapper {
   height: 36px;
   padding: 0px 16px;
@@ -63,4 +72,9 @@
   font-family: 'Lato' sans-serif;
   font-size: 20px;
   color: var(--color-white-50);
+}
+
+.transaction-value-button-finish:hover {
+  cursor: pointer;
+  filter: brightness(1.07);
 }

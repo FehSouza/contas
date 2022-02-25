@@ -30,6 +30,16 @@
   outline: none;
 }
 
+.installment-value:hover {
+  cursor: text;
+  outline: 0.1px solid var(--color-blue-50);
+}
+
+.installment-value:disabled {
+  outline: none;
+  cursor: not-allowed;
+}
+
 .installment-check-wrapper {
   display: flex;
   align-items: center;
@@ -47,6 +57,10 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+}
+
+.installment-check-box:hover{
+  cursor: pointer;
 }
 
 .fa-check {

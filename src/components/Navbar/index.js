@@ -21,7 +21,7 @@ export const Navbar = ({ handleNavigationHome, handleNavigationWallets, handleNa
     class: 'navbar-button-add-account',
     iconProps: 'icon-add-account',
     onClick: () => {
-      handleNavigationAddTransaction;
+      handleNavigationAddTransaction();
       $buttonAddAccount.classList.add('active');
       $buttonWallet.classList.remove('active');
       $buttonHome.classList.remove('active');

@@ -8,7 +8,11 @@
 }
 
 .navbar-page > .active {
-  color: red;
+  color: var(--color-blue-50);
+}
+
+.navbar-page > .active > .icon-add-account {
+  color: var(--color-black-50);
 }
 
 .navbar-button-add-account {
@@ -27,6 +31,11 @@
   cursor: pointer;
   filter: brightness(1.07);
   transform: rotate(180deg);
+}
+
+.navbar-button-add-account:hover > .icon-add-account {
+  color: var(--color-grey-100);
+  transition-duration: 300ms;
 }
 
 .navbar-button-home,

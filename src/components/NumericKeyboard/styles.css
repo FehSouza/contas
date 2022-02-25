@@ -31,6 +31,13 @@
   margin: 3.7vw;
 }
 
+.numeric-keyboard-key:hover {
+  cursor: pointer;
+  border: 3px solid var(--color-blue-50A);
+  color: var(--color-blue-50A);
+  transition-duration: 250ms;
+}
+
 .numeric-keyboard-key-backspace {
   width: 18vw;
   height: 18vw;
@@ -39,4 +46,10 @@
   font-size: 28px;
   color: var(--color-blue-50);
   margin: 3.7vw;
+}
+
+.fa-backspace:hover {
+  cursor: pointer;
+  color: var(--color-blue-50A);
+  transition-duration: 250ms;
 }

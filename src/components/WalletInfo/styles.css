@@ -25,6 +25,17 @@
   margin: 8px 0px;
 }
 
+.wallet-wrapper-button:hover,
+.wallet-button:hover {
+  cursor: pointer;
+  background-color: var(--color-blue-50A);
+  transition-duration: 300ms;
+}
+
+.wallet-wrapper-button:hover {
+  filter: brightness(1.12);
+}
+
 .wallet-icon {
   width: 44px;
   height: 44px;
@@ -37,6 +48,10 @@
 }
 
 .fa-wallet-icon {
+  color: var(--color-white-50);
+}
+
+.wallet-icon > .fa-wallet-icon:hover {
   color: var(--color-white-50);
 }
 

@@ -23,3 +23,8 @@
   color: var(--color-grey-100);
   outline: none;
 }
+
+.date-wrapper:hover {
+  cursor: text;
+  outline: 0.1px solid var(--color-blue-50);
+}

@@ -14,7 +14,7 @@ export const NumericKeyboard = (updateValue) => {
     elem === $keyBackspace ? (value = value.slice(0, value.length - 1)) : (value += elem);
     const number = (Number(value) / 100).toFixed(2);
     store.setTransactionAmount(number);
-    updateValue();
+    number !== '0.00' ? updateValue({ statusKey: true }) : updateValue({ statusKey: false });
   };
 
   const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];

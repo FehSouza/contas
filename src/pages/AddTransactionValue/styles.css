@@ -12,8 +12,15 @@
   height: 50px;
   border-radius: 25px;
   border: none;
-  background-color: var(--color-blue-50);
   font-size: 20px;
   color: var(--color-white-50);
   margin-top: calc((100vh - 50px - 170px - 4 * 18vw - 8 * 3.7vw - 50px - 50px) / 2);
+  cursor: pointer;
+  filter: brightness(1.07);
+  background-color: var(--color-blue-50);
+}
+
+.add-transaction-button-continue:disabled {
+  background-color: var(--color-blue-50A);
+  cursor: not-allowed;
 }

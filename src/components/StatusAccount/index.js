@@ -23,10 +23,10 @@ export const StatusAccount = (setStatus) => {
   const $title = Element('h2', { class: 'title-status-account', children: 'Status' });
 
   const $buttonTogglePay = Button({ class: 'button-toggle', onClick: toggleButtons });
-  const $togglePay = Element('span', { class: ['toggle-pay', 'toggle-pay-pay'], children: 'Pago' });
+  const $togglePay = Button({ class: ['toggle-pay', 'toggle-pay-pay'], title: 'Pago', onClick: toggleButtons });
   const $buttonToggleNoPay = Button({ class: 'button-toggle', onClick: toggleButtons });
   $buttonToggleNoPay.appendChild($icon);
-  const $toggleNoPay = Element('span', { class: 'toggle-pay', children: 'Não pago' });
+  const $toggleNoPay = Button({ class: 'toggle-pay', title: 'Não pago', onClick: toggleButtons });
 
   const $toggle = Element('div', {
     class: 'toggle-status-account',

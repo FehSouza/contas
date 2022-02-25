@@ -72,6 +72,7 @@ export const AddTransactionInfo = ({ walletInfo }) => {
   const $finishButton = Button({
     class: 'transaction-value-button-finish',
     title: 'Concluir',
+    disabled: true,
     onClick: () => {
       if (date && category && wallet) {
         store.addBill(date, { amount: store.getTransactionAmount(), category, subcategory, wallet, status });

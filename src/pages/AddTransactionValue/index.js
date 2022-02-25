@@ -24,13 +24,17 @@ export const AddTransactionValue = () => {
   const $continueButton = Button({
     title: 'Continuar',
     class: 'add-transaction-button-continue',
+    disabled: true,
     onClick: () => handleNavigationAddTransactionInfo(),
   });
 
-  const updateValue = () => {
+  const updateValue = ({ statusKey }) => {
     const $value = document.querySelector('.transaction-amount');
     $value.textContent = formatMoney(store.getTransactionAmount());
     $value.className = 'transaction-amount';
+
+    $continueButton.disabled = !statusKey;
+
     if (store.getTypeTransaction() === 'recipe') $value.classList.add('transaction-amount-recipe');
     if (store.getTypeTransaction() === 'expense') $value.classList.add('transaction-amount-expense');
     if (store.getTypeTransaction() === 'transfer') $value.classList.add('transaction-amount-transfer');
