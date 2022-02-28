@@ -9,11 +9,14 @@ export const WalletsList = (props, isModal, isButton, funcButton, animation) => 
 
   for (const item of props) {
     const $infoWallet = InfoWallet(item, isModal, isButton, () => funcButton(item.id), animation);
-    $infoWallet.classList.add('wallet-list-item')
+    $infoWallet.classList.add('wallet-list-item');
     $walletListWrapper.appendChild($infoWallet);
   }
 
-  if (isModal) $walletListWrapper.classList.add('wallets-list-wrapper-button');
+  if (isModal) {
+    $walletListWrapper.classList.remove('wallets-list-wrapper');
+    $walletListWrapper.classList.add('wallets-list-wrapper-button');
+  }
 
   return $walletListWrapper;
 };

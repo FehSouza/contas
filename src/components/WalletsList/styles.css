@@ -9,19 +9,33 @@
   overflow-x: hidden;
 }
 
+.wallets-list-wrapper {
+  width: 100%;
+  border: none;
+  background-color: var(--color-white-50);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  max-height: 228px;
+}
+
 .wallets-list-wrapper-button > .wallet-list-item {
   margin-left: 5%;
 }
 
-.wallets-list-wrapper-button::-webkit-scrollbar {
+.wallets-list-wrapper-button::-webkit-scrollbar,
+.wallets-list-wrapper::-webkit-scrollbar {
   width: 14px; /* width of the entire scrollbar */
 }
 
-.wallets-list-wrapper-button::-webkit-scrollbar-track {
+.wallets-list-wrapper-button::-webkit-scrollbar-track,
+.wallets-list-wrapper::-webkit-scrollbar-track {
   background-color: var(--color-white-50); /* color of the tracking area */
 }
 
-.wallets-list-wrapper-button::-webkit-scrollbar-thumb {
+.wallets-list-wrapper-button::-webkit-scrollbar-thumb,
+.wallets-list-wrapper::-webkit-scrollbar-thumb {
   background-color: var(--color-blue-50A); /* color of the scroll thumb */
   border-radius: 14px; /* roundness of the scroll thumb */
   border: 4px solid var(--color-white-50); /*creates padding around scroll thumb */

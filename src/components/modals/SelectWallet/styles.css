@@ -90,12 +90,12 @@
   font-size: 16px;
   color: var(--color-white-50);
   margin-top: 8px;
+}
+
+.add-new-wallet-button:hover {
   cursor: pointer;
   filter: brightness(1.07);
 }
-/* 
-.add-new-wallet-button:hover {
-} */
 
 .add-new-wallet-button:disabled {
   background-color: var(--color-blue-50A);

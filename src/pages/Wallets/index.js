@@ -27,9 +27,13 @@ export const Wallets = () => {
       document.body.appendChild(addWallet);
     },
   });
+  const $walletsWrapper = Element('div', {
+    class: 'wallets-wrapper-page',
+    children: [$walletsListWrapper, $addWalletButton],
+  });
   const $walletsContent = Element('div', {
     class: 'wallets-content-page',
-    children: [$titleWallets, $walletsListWrapper, $addWalletButton],
+    children: [$titleWallets, $walletsWrapper],
   });
   $walletsListWrapper.classList.add('wallets-list-wrapper-page');
 
