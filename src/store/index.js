@@ -55,7 +55,7 @@ class Store {
 const typeTransaction = 'expense';
 const transactionAmount = 0;
 const bills = [];
-const wallets = [];
+const wallets = [{wallet: 'santarder', user: 'raul', amount: 100}];
 const wallet = undefined;
 const addWalletStatus = false;
 

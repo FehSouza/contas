@@ -4,11 +4,12 @@
 
   --color-blue-50: #53a9ff;
   --color-blue-100: #328de8;
-  
+
   --color-blue-0A: #53a9ff00;
   --color-blue-50A: #53a9ff69;
 
   --color-green-50: #53ffb9;
+  --color-green-50A: #53ffb969;
 
   --color-grey-50: #f2f2f2;
   --color-grey-100: #707070;
@@ -18,6 +19,7 @@
   --color-purple-100: #6f49db;
 
   --color-red-50: #ff5353;
+  --color-red-50A: #ff535369;
   --color-red-100: #de5959;
 
   --color-white-50: #ffffff;

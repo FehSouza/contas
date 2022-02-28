@@ -23,7 +23,9 @@ export const HeaderTransaction = (updateValue) => {
     $transferButton.classList.remove('button-on');
     button.classList.add('button-on');
     store.setTypeTransaction(typeTransaction);
-    updateValue();
+    store.getTransactionAmount() !== '0.00' && store.getTransactionAmount() !== 0
+      ? updateValue({ statusKey: true })
+      : updateValue({ statusKey: false });
   };
 
   const $headerTransactionWrapper = Element('div', {

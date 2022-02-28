@@ -29,22 +29,33 @@ export const SelectWallet = (add) => {
   };
 
   const $title = Element('span', { class: 'add-new-wallet-title', children: 'Nome da carteira:' });
-  const $titleInput = Element('input', { class: 'add-new-wallet-input', type: 'text' });
+  const $titleInput = Element('input', { class: 'add-new-wallet-input', type: 'text', onkeyup: () => handleInputs() });
   const $titleWrapper = Element('div', { class: 'add-new-wallet-wrapper', children: [$title, $titleInput] });
 
   const $user = Element('span', { class: 'add-new-wallet-title', children: 'Nome do usuário:' });
-  const $userInput = Element('input', { class: 'add-new-wallet-input', type: 'text' });
+  const $userInput = Element('input', { class: 'add-new-wallet-input', type: 'text', onkeyup: () => handleInputs() });
   const $userWrapper = Element('div', { class: 'add-new-wallet-wrapper', children: [$user, $userInput] });
 
   const $amount = Element('span', { class: 'add-new-wallet-title', children: 'Valor inicial:' });
-  const $amountInput = Element('input', { class: 'add-new-wallet-input', type: 'number' });
+  const $amountInput = Element('input', {
+    class: 'add-new-wallet-input',
+    type: 'number',
+    onkeyup: () => handleInputs(),
+  });
   const $amountWrapper = Element('div', { class: 'add-new-wallet-wrapper', children: [$amount, $amountInput] });
+
+  const handleInputs = () => {
+    $titleInput.value && $userInput.value && $amountInput.value
+      ? ($buttonAddWallet.disabled = false)
+      : ($buttonAddWallet.disabled = true);
+  };
 
   let $listWallets = WalletsList(store.getWallets(), true, true, addWalletClick, true);
 
   const $buttonAddWallet = Button({
     title: 'Criar carteira',
     class: 'add-new-wallet-button',
+    disabled: true,
     onClick: () => {
       if ($titleInput.value && $userInput.value && $amountInput.value) {
         store.addWallet({
@@ -61,6 +72,7 @@ export const SelectWallet = (add) => {
         $titleInput.value = '';
         $userInput.value = '';
         $amountInput.value = '';
+        $buttonAddWallet.disabled = true;
       }
     },
   });

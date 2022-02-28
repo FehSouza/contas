@@ -38,19 +38,46 @@ export const AddTransactionInfo = ({ walletInfo }) => {
     children: [$deleteButton, $valueWrapper, $boxInvisible],
   });
 
+  const updateValue = () => {
+    $valueWrapper.className = 'transaction-value-wrapper';
+    if (store.getTypeTransaction() === 'recipe') $valueWrapper.classList.add('transaction-value-wrapper-recipe');
+    if (store.getTypeTransaction() === 'expense') $valueWrapper.classList.add('transaction-value-wrapper-expense');
+    if (store.getTypeTransaction() === 'transfer') $valueWrapper.classList.add('transaction-value-wrapper-transfer');
+  };
+  updateValue();
+
+  const $finishButton = Button({
+    class: 'transaction-value-button-finish',
+    title: 'Concluir',
+    disabled: true,
+    onClick: () => {
+      if (date && category && wallet) {
+        store.addBill(date, { amount: store.getTransactionAmount(), category, subcategory, wallet, status });
+        handleNavigationHome();
+      }
+    },
+  });
+
   let category;
   let subcategory;
   let date;
   let status = false;
 
-  const setCategory = (newCategory) => (category = newCategory);
+  const setCategory = (newCategory) => {
+    category = newCategory;
+    date && category && wallet ? ($finishButton.disabled = false) : ($finishButton.disabled = true);
+  };
   const setSubcategory = (newSubcategory) => (subcategory = newSubcategory);
-  const setDate = (newDate) => (date = newDate);
+  const setDate = (newDate) => {
+    date = newDate;
+    date && category && wallet ? ($finishButton.disabled = false) : ($finishButton.disabled = true);
+  };
   const setStatus = (newStatus) => (status = newStatus);
 
   let $walletInfo;
   let wallet;
   if (walletInfo) {
+    date && category && wallet ? ($finishButton.disabled = false) : ($finishButton.disabled = true);
     $walletInfo = InfoWallet(walletInfo, true, true, () => {
       const selectWallet = SelectWallet();
       document.body.appendChild(selectWallet);
@@ -69,21 +96,9 @@ export const AddTransactionInfo = ({ walletInfo }) => {
   const $tag = Tag();
   const $comments = Comments();
 
-  const $finishButton = Button({
-    class: 'transaction-value-button-finish',
-    title: 'Concluir',
-    disabled: true,
-    onClick: () => {
-      if (date && category && wallet) {
-        store.addBill(date, { amount: store.getTransactionAmount(), category, subcategory, wallet, status });
-        handleNavigationHome();
-      }
-    },
-  });
-
   const $addTransactionContent = Element('div', {
     class: 'add-transaction-content-info',
-    children: [HeaderTransaction(), $valueContent, $walletInfo, $categoryInfo],
+    children: [HeaderTransaction(updateValue), $valueContent, $walletInfo, $categoryInfo],
   });
   const $addTransactionContainer = Element('div', {
     class: 'add-transaction-container-info',

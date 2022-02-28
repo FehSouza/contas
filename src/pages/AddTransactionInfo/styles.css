@@ -44,7 +44,6 @@
   padding: 0px 16px;
   margin: 20px 0px;
   box-sizing: border-box;
-  background-color: var(--color-blue-50A);
   border-radius: 9px;
   border: none;
   display: flex;
@@ -54,6 +53,7 @@
 
 .transaction-value {
   font-size: 16px;
+  font-weight: 700;
   color: var(--color-grey-100);
 }
 
@@ -77,4 +77,21 @@
 .transaction-value-button-finish:hover {
   cursor: pointer;
   filter: brightness(1.07);
+}
+
+.transaction-value-button-finish:disabled {
+  background-color: var(--color-blue-50A);
+  cursor: not-allowed;
+}
+
+.transaction-value-wrapper-recipe {
+  background-color: var(--color-green-50A);
+}
+
+.transaction-value-wrapper-expense {
+  background-color: var(--color-red-50A);
+}
+
+.transaction-value-wrapper-transfer {
+  background-color: var(--color-blue-50A);
 }

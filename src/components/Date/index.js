@@ -10,8 +10,9 @@ export const Date = (setDate) => {
     class: 'date-wrapper',
     type: 'date',
     onChange: (event) => {
-      const [year, mouth, day] = event.target.value.split('-');
-      const valueFormat = `${day}/${mouth}/${year}`;
+      const value = event.target.value;
+      const [year, mouth, day] = value.split('-');
+      const valueFormat = !!value ? `${day}/${mouth}/${year}` : value;
       setDate(valueFormat);
     },
   });
