@@ -50,34 +50,36 @@ export const SelectWallet = (add) => {
       : ($buttonAddWallet.disabled = true);
   };
 
-  let $listWallets = WalletsList(store.getWallets(), true, true, addWalletClick, true);
+  let $listWallets = WalletsList({ blueCard: true, isButton: true, funcButton: addWalletClick, animation: true });
 
   const $buttonAddWallet = Button({
     title: 'Criar carteira',
     class: 'add-new-wallet-button',
     disabled: true,
     onClick: () => {
-      if ($titleInput.value && $userInput.value && $amountInput.value) {
-        store.addWallet({
-          wallet: $titleInput.value,
-          user: $userInput.value,
-          amount: Number($amountInput.value),
-          id: Math.random().toString(36).slice(2, 11),
-        });
-        $addWalletWrapper.removeChild($addNewWallet);
-        store.setAddWalletStatus(false);
-        $listWallets.remove();
-        $listWallets = WalletsList(store.getWallets(), true, true, addWalletClick, true);
-        $content.appendChild($listWallets);
-        $titleInput.value = '';
-        $userInput.value = '';
-        $amountInput.value = '';
-        $buttonAddWallet.disabled = true;
-      }
+      store.addWallet({
+        wallet: $titleInput.value,
+        user: $userInput.value,
+        amount: Number($amountInput.value),
+        id: Math.random().toString(36).slice(2, 11),
+      });
+      $titleInput.value = '';
+      $userInput.value = '';
+      $amountInput.value = '';
+      $buttonAddWallet.disabled = true;
+      $addWalletWrapper.removeChild($addNewWallet);
+      store.setAddWalletStatus(false);
+      $listWallets.remove();
+      $listWallets = WalletsList({ blueCard: true, isButton: true, funcButton: addWalletClick, animation: true });
+      $textWithoutWallet.remove();
+      $content.appendChild($listWallets);
     },
   });
 
-  const $addWallet = InfoWallet({ wallet: 'Adicione uma nova carteira', amount: false }, true, true, addNewWallet);
+  const $addWallet = InfoWallet(
+    { wallet: 'Adicione uma nova carteira', amount: false },
+    { blueCard: true, isButton: true, funcButton: addNewWallet }
+  );
   const $addNewWallet = Element('div', {
     class: 'add-new-wallet-content',
     children: [$titleWrapper, $userWrapper, $amountWrapper, $buttonAddWallet],
@@ -95,8 +97,12 @@ export const SelectWallet = (add) => {
     children: [$addWalletWrapper],
     onClick: (event) => event.stopPropagation(),
   });
+  const $textWithoutWallet = Element('span', {
+    class: 'text-without-wallet',
+    textContent: 'Não há nenhuma carteira adicionada.',
+  });
 
-  if (store.getWallets().length) $content.appendChild($listWallets);
+  store.getWallets().length ? $content.appendChild($listWallets) : $content.appendChild($textWithoutWallet);
 
   const $container = Element('div', {
     class: 'select-wallet-container',

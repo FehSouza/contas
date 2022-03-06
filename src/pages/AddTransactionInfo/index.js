@@ -78,16 +78,27 @@ export const AddTransactionInfo = ({ walletInfo }) => {
   let wallet;
   if (walletInfo) {
     date && category && wallet ? ($finishButton.disabled = false) : ($finishButton.disabled = true);
-    $walletInfo = InfoWallet(walletInfo, true, true, () => {
-      const selectWallet = SelectWallet();
-      document.body.appendChild(selectWallet);
+    $walletInfo = InfoWallet(walletInfo, {
+      blueCard: true,
+      isButton: true,
+      funcButton: () => {
+        const selectWallet = SelectWallet();
+        document.body.appendChild(selectWallet);
+      },
     });
     wallet = walletInfo.wallet;
   } else
-    $walletInfo = InfoWallet({ wallet: 'Selecione a Carteira' }, true, true, () => {
-      const selectWallet = SelectWallet();
-      document.body.appendChild(selectWallet);
-    });
+    $walletInfo = InfoWallet(
+      { wallet: 'Selecione a Carteira' },
+      {
+        blueCard: true,
+        isButton: true,
+        funcButton: () => {
+          const selectWallet = SelectWallet();
+          document.body.appendChild(selectWallet);
+        },
+      }
+    );
 
   const $categoryInfo = CategoryInfo({ category, subcategory, setCategory, setSubcategory });
   const $date = Date(setDate);

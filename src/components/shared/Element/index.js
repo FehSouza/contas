@@ -51,6 +51,10 @@ export const Element = (type, properties) => {
       elem.addEventListener('mouseout', properties[key]);
       continue;
     }
+    if (key.toLowerCase() === 'textcontent') {
+      elem.textContent = properties[key];
+      continue;
+    }
     elem.setAttribute(key, properties[key]);
   }
   return elem;

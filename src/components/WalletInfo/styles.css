@@ -73,9 +73,32 @@
 }
 
 .wallet-amount {
+  display: flex;
+  align-items: center;
   font-size: 14px;
   font-weight: 900;
   color: var(--color-blue-50);
+}
+
+.wallet-delete-button {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  margin-left: 16px;
+}
+
+.wallet-delete-button:hover {
+  cursor: pointer;
+  filter: brightness(1.07);
+}
+
+.delete-trash {
+  color: var(--color-blue-50);
+  font-size: 18px;
 }
 
 .wallet-button {

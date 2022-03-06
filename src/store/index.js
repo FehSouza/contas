@@ -14,6 +14,13 @@ class Store {
 
   getWallets = () => this._state.wallets;
   addWallet = (newWallets) => (this._state.wallets = [...this._state.wallets, newWallets]);
+  deleteWallet = (id) => {
+    const wallets = this._state.wallets.reduce((acc, elem) => {
+      if (elem.id === id) return acc;
+      return [...acc, elem];
+    }, []);
+    this._state.wallets = wallets;
+  };
   getWallet = () => this._state.wallet;
   setWallet = (id) => {
     const [wallet] = this._state.wallets.filter((elem) => {
@@ -55,7 +62,7 @@ class Store {
 const typeTransaction = 'expense';
 const transactionAmount = 0;
 const bills = [];
-const wallets = [{wallet: 'santarder', user: 'raul', amount: 100}];
+const wallets = [{ wallet: 'NuBank', user: 'Raul', amount: 100 }];
 const wallet = undefined;
 const addWalletStatus = false;
 

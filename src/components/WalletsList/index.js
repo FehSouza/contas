@@ -1,19 +1,52 @@
 import { Element } from '../shared/Element/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { InfoWallet } from '../WalletInfo/index.js';
+import { store } from '../../store/index.js';
 
 importCSS('./src/components/WalletsList/styles.css');
 
-export const WalletsList = (props, isModal, isButton, funcButton, animation) => {
+export const WalletsList = ({ blueCard, isButton, funcButton, animation }) => {
   const $walletListWrapper = Element('div', { class: 'wallets-list-wrapper' });
 
-  for (const item of props) {
-    const $infoWallet = InfoWallet(item, isModal, isButton, () => funcButton(item.id), animation);
-    $infoWallet.classList.add('wallet-list-item');
-    $walletListWrapper.appendChild($infoWallet);
-  }
+  const updateList = () => {
+    $walletListWrapper.innerHTML = '';
+    addAllWallets(store.getWallets());
+  };
 
-  if (isModal) {
+  const deleteWallet = (id) => {
+    store.deleteWallet(id);
+  };
+
+  const handleDelete = (id) => {
+    deleteWallet(id);
+    updateList();
+  };
+
+  const addAllWallets = (wallets) => {
+    if (store.getWallets().length < 1) {
+      $walletListWrapper.appendChild(
+        Element('span', {
+          class: 'text-without-wallet',
+          textContent: 'Não há nenhuma carteira adicionada.',
+        })
+      );
+    }
+    for (const item of wallets) {
+      const $infoWallet = InfoWallet(item, {
+        blueCard,
+        isButton,
+        funcButton: () => funcButton(item.id),
+        animation,
+        funcDelete: () => handleDelete(item.id),
+      });
+      $infoWallet.classList.add('wallet-list-item');
+      $walletListWrapper.appendChild($infoWallet);
+    }
+  };
+
+  addAllWallets(store.getWallets());
+
+  if (blueCard) {
     $walletListWrapper.classList.remove('wallets-list-wrapper');
     $walletListWrapper.classList.add('wallets-list-wrapper-button');
   }

@@ -8,6 +8,7 @@ export const Icon = (icon, classes) => {
   if (icon === 'delete') $icon.classList.add('fas', 'fa-times', classes);
   if (icon === 'category') $icon.classList.add('fas', 'fa-list', classes);
   if (icon === 'check') $icon.classList.add('fas', 'fa-check', classes);
+  if (icon === 'delete-trash') $icon.classList.add('fa-solid', 'fa-trash-can', classes);
 
   return $icon;
 };

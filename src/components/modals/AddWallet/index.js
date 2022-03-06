@@ -32,6 +32,8 @@ export const AddWallet = () => {
       ? ($buttonAddWallet.disabled = false)
       : ($buttonAddWallet.disabled = true);
   };
+  const walletList = document.querySelector('.wallets-list-wrapper');
+  const walletContent = document.querySelector('.wallets-wrapper-page');
 
   const $buttonAddWallet = Button({
     title: 'Criar carteira',
@@ -49,10 +51,8 @@ export const AddWallet = () => {
       $amountInput.value = '';
       $buttonAddWallet.disabled = true;
       $modal.remove();
-      const walletList = document.querySelector('.wallets-list-wrapper');
-      const walletContent = document.querySelector('.wallets-wrapper-page');
       walletList.remove();
-      walletContent.prepend(WalletsList(store.getWallets(), false, false, false, false));
+      walletContent.prepend(WalletsList({}));
     },
   });
 

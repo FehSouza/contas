@@ -7,13 +7,11 @@ import { SelectWallet } from '../modals/SelectWallet/index.js';
 
 importCSS('./src/components/WalletInfo/styles.css');
 
-export const InfoWallet = ({ wallet, user, amount }, isWallet, isButton, funcButton, animation) => {
+export const InfoWallet = ({ wallet, user, amount }, { blueCard, isButton, funcButton, animation, funcDelete }) => {
   const $icon = Element('div', { class: 'wallet-icon', children: Icon('wallet', 'fa-wallet-icon') });
 
-  const $title = Element('h3', { class: 'wallet-title' });
-  if (wallet) $title.textContent = wallet;
-  const $user = Element('span', { class: 'wallet-user' });
-  if (user) $user.textContent = user;
+  const $title = Element('h3', { class: 'wallet-title', children: wallet });
+  const $user = Element('span', { class: 'wallet-user', children: user });
   const $titleAndUser = Element('div', { class: 'wallet-title-and-user', children: [$title, $user] });
 
   const $walletButton = Button({
@@ -28,12 +26,25 @@ export const InfoWallet = ({ wallet, user, amount }, isWallet, isButton, funcBut
   });
   const value = formatMoney(amount);
   const $amount = Element('span', { class: 'wallet-amount', children: $walletButton });
-  if (amount) $amount.textContent = value;
-  if (amount === false) $amount.textContent = '';
 
   const $walletWrapper = Element('div', { class: 'wallet-wrapper', children: [$icon, $titleAndUser, $amount] });
+  if (amount) {
+    $amount.textContent = value;
+    const $deleteButton = Button({
+      class: 'wallet-delete-button',
+      icon: 'delete-trash',
+      iconProps: 'delete-trash',
+      onClick: (e) => {
+        e.stopPropagation();
 
-  if (isWallet) $walletWrapper.classList.add(`wallet-wrapper-button`);
+        funcDelete();
+      },
+    });
+    $amount.appendChild($deleteButton);
+  }
+  if (amount === false) $amount.textContent = '';
+
+  if (blueCard) $walletWrapper.classList.add(`wallet-wrapper-button`);
   if (isButton) $walletWrapper.addEventListener('click', funcButton);
   if (animation) $walletWrapper.classList.add('wallet-wrapper-animation');
 

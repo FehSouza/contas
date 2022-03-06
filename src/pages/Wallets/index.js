@@ -3,7 +3,6 @@ import { importCSS } from '../../utils/importCSS/index.js';
 import { Header } from '../../components/Header/index.js';
 import { WalletsList } from '../../components/WalletsList/index.js';
 import { GoalsList } from '../../components/GoalsList/index.js';
-import { store } from '../../store/index.js';
 import { Button } from '../../components/shared/Button/index.js';
 import { AddWallet } from '../../components/modals/AddWallet/index.js';
 
@@ -18,7 +17,7 @@ export const Wallets = () => {
   const $header = Header(100000);
 
   const $titleWallets = Element('span', { class: 'wallets-title', children: 'Carteiras' });
-  const $walletsListWrapper = WalletsList(store.getWallets());
+  const $walletsListWrapper = WalletsList({});
   const $addWalletButton = Button({
     title: 'Nova carteira',
     class: 'add-wallet-button',
@@ -36,10 +35,6 @@ export const Wallets = () => {
     children: [$titleWallets, $walletsWrapper],
   });
   $walletsListWrapper.classList.add('wallets-list-wrapper-page');
-
-  if (store.getWallets().length < 1) {
-    $walletsListWrapper.textContent = 'Não há nenhuma carteira adicionada.';
-  }
 
   const $goalsListWrapper = GoalsList(GOALS_MOCK);
 
