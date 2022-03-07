@@ -1,4 +1,4 @@
-import { Element } from '../Element/index.js';
+import { createElement } from '../../../utils/createElement/index.js';
 import { Icon } from '../Icon/index.js';
 
 export const Button = ({ title, icon, iconProps, ...properties }) => {
@@ -7,7 +7,7 @@ export const Button = ({ title, icon, iconProps, ...properties }) => {
   if (title) children.push(title);
   if (icon) children.push(Icon(icon, iconProps));
 
-  const $button = Element('button', { ...properties, children });
+  const $button = createElement('button', { ...properties, children });
 
   return $button;
 };

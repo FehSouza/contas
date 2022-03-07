@@ -1,22 +1,25 @@
-import { Element } from '../shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { Icon } from '../shared/Icon/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { formatMoney } from '../../utils/currency/index.js';
 
-importCSS('./src/components/GoalsItem/styles.css');
+importCSS('GoalsItem');
 
 export const GoalsItem = ({ title, amount }) => {
-  const $icon = Element('div', { class: 'goals-item-icon', children: Icon('wallet', 'fa-wallet-icon-goals') });
+  const $icon = createElement('div', { class: 'goals-item-icon', children: Icon('wallet', 'fa-wallet-icon-goals') });
 
-  const $title = Element('h3', { class: 'goals-item-title', children: title });
-  const $statusInternal = Element('div', { class: 'goals-item-status-internal' });
-  const $statusExternal = Element('div', { class: 'goals-item-status-external', children: $statusInternal });
-  const $titleAndStatus = Element('div', { class: 'goals-item-title-and-status', children: [$title, $statusExternal] });
+  const $title = createElement('h3', { class: 'goals-item-title', children: title });
+  const $statusInternal = createElement('div', { class: 'goals-item-status-internal' });
+  const $statusExternal = createElement('div', { class: 'goals-item-status-external', children: $statusInternal });
+  const $titleAndStatus = createElement('div', {
+    class: 'goals-item-title-and-status',
+    children: [$title, $statusExternal],
+  });
 
   const value = formatMoney(amount);
-  const $amount = Element('span', { class: 'goals-item-amount', children: value });
+  const $amount = createElement('span', { class: 'goals-item-amount', textContent: value });
 
-  const $goalsItemWrapper = Element('div', {
+  const $goalsItemWrapper = createElement('div', {
     class: 'goals-item-wrapper',
     children: [$icon, $titleAndStatus, $amount],
   });

@@ -1,8 +1,8 @@
-import { Element } from '../shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { Button } from '../shared/Button/index.js';
 
-importCSS('./src/components/Tag/styles.css');
+importCSS('Tag');
 
 export const Tag = () => {
   let listTags = [];
@@ -16,7 +16,7 @@ export const Tag = () => {
         iconProps: 'tag-button-delete-icon',
         onClick: () => handleDeleteTag(i),
       });
-      const $newTag = Element('div', { class: ['new-tag'], children: [listTags[i], $deleteButton] });
+      const $newTag = createElement('div', { class: ['new-tag'], children: [listTags[i], $deleteButton] });
       $newTagContent.appendChild($newTag);
       $newTagContent.classList.add('new-tag-content');
       $tagContainer.classList.remove('tag-container');
@@ -44,11 +44,11 @@ export const Tag = () => {
     renderTag(listTags);
   };
 
-  const $newTagContent = Element('div');
-  const $tagInput = Element('input', { class: 'tag-input' });
+  const $newTagContent = createElement('div');
+  const $tagInput = createElement('input', { class: 'tag-input' });
   const $tagButton = Button({ title: 'Adicionar', icon: 'add', class: 'tag-button', onClick: () => handleAddTag() });
-  const $tagContent = Element('div', { class: 'tag-content', children: [$tagInput, $tagButton] });
-  const $tagContainer = Element('div', { class: 'tag-container', children: [$newTagContent, $tagContent] });
+  const $tagContent = createElement('div', { class: 'tag-content', children: [$tagInput, $tagButton] });
+  const $tagContainer = createElement('div', { class: 'tag-container', children: [$newTagContent, $tagContent] });
 
   return $tagContainer;
 };

@@ -1,7 +1,7 @@
-import { Element } from '../shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 
-importCSS('./src/components/Comments/styles.css');
+importCSS('Comments');
 
 export const Comments = () => {
   const calcCharacters = (event) => {
@@ -11,15 +11,18 @@ export const Comments = () => {
     return ($quantityCharacters.textContent = `Restam ${rest} caracteres.`);
   };
 
-  const $quantityCharacters = Element('span', { class: 'quantity-characters', children: 'Restam 200 caracteres.' });
-  const $commentsWrapper = Element('textarea', {
+  const $quantityCharacters = createElement('span', {
+    class: 'quantity-characters',
+    textContent: 'Restam 200 caracteres.',
+  });
+  const $commentsWrapper = createElement('textarea', {
     class: 'comments-wrapper',
     placeholder: 'Obs...',
     maxLength: '200',
     onKeyup: calcCharacters,
   });
 
-  const $commentsContent = Element('div', {
+  const $commentsContent = createElement('div', {
     class: 'comments-content',
     children: [$commentsWrapper, $quantityCharacters],
   });

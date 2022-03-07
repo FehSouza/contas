@@ -1,12 +1,13 @@
-import { Element } from '../../components/shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { Header } from '../../components/Header/index.js';
 import { WalletsList } from '../../components/WalletsList/index.js';
 import { GoalsList } from '../../components/GoalsList/index.js';
 import { Button } from '../../components/shared/Button/index.js';
 import { AddWallet } from '../../components/modals/AddWallet/index.js';
+import { store } from '../../store/index.js';
 
-importCSS('./src/pages/Wallets/styles.css');
+importCSS('pages/Wallets');
 
 const GOALS_MOCK = [
   { title: 'Reserva', amount: 200 },
@@ -14,9 +15,9 @@ const GOALS_MOCK = [
 ];
 
 export const Wallets = () => {
-  const $header = Header(100000);
+  const $header = Header(store.getAmountTotal());
 
-  const $titleWallets = Element('span', { class: 'wallets-title', children: 'Carteiras' });
+  const $titleWallets = createElement('span', { class: 'wallets-title', textContent: 'Carteiras' });
   const $walletsListWrapper = WalletsList({});
   const $addWalletButton = Button({
     title: 'Nova carteira',
@@ -26,11 +27,11 @@ export const Wallets = () => {
       document.body.appendChild(addWallet);
     },
   });
-  const $walletsWrapper = Element('div', {
+  const $walletsWrapper = createElement('div', {
     class: 'wallets-wrapper-page',
     children: [$walletsListWrapper, $addWalletButton],
   });
-  const $walletsContent = Element('div', {
+  const $walletsContent = createElement('div', {
     class: 'wallets-content-page',
     children: [$titleWallets, $walletsWrapper],
   });
@@ -38,14 +39,14 @@ export const Wallets = () => {
 
   const $goalsListWrapper = GoalsList(GOALS_MOCK);
 
-  const $walletContent = Element('div', {
+  const $walletContent = createElement('div', {
     class: 'wallet-content',
     children: [$walletsContent, $goalsListWrapper],
   });
-  const $walletContainer = Element('div', {
+  const $walletContainer = createElement('div', {
     class: 'wallet-container',
     children: $walletContent,
   });
-  const $walletPage = Element('div', { class: 'wallets-page', children: [$header, $walletContainer] });
+  const $walletPage = createElement('div', { class: 'wallets-page', children: [$header, $walletContainer] });
   return $walletPage;
 };

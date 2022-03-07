@@ -1,8 +1,8 @@
-import { Element } from '../shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { Button } from '../shared/Button/index.js';
 import { importCSS } from '../../utils/importCss/index.js';
 
-importCSS('./src/components/Navbar/styles.css');
+importCSS('Navbar');
 
 export const Navbar = ({ handleNavigationHome, handleNavigationWallets, handleNavigationAddTransaction }) => {
   const $buttonHome = Button({
@@ -37,7 +37,7 @@ export const Navbar = ({ handleNavigationHome, handleNavigationWallets, handleNa
       $buttonHome.classList.remove('active');
     },
   });
-  const $pageNavbar = Element('div', {
+  const $pageNavbar = createElement('div', {
     class: 'navbar-page',
     children: [$buttonHome, $buttonAddAccount, $buttonWallet],
   });

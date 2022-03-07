@@ -1,9 +1,9 @@
-import { Element } from '../shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { Button } from '../shared/Button/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { store } from '../../store/index.js';
 
-importCSS('./src/components/HeaderTransaction/styles.css');
+importCSS('HeaderTransaction');
 
 export const HeaderTransaction = (updateValue) => {
   const $recipeButton = Button({ title: 'Receita', class: 'header-transaction-button' });
@@ -23,12 +23,17 @@ export const HeaderTransaction = (updateValue) => {
     $transferButton.classList.remove('button-on');
     button.classList.add('button-on');
     store.setTypeTransaction(typeTransaction);
+    typeTransaction === 'expense'
+      ? store.setTransactionAmount(
+          store.getTransactionAmount() <= 0 ? store.getTransactionAmount() : store.getTransactionAmount() * -1
+        )
+      : store.setTransactionAmount(Math.abs(store.getTransactionAmount()));
     store.getTransactionAmount() !== '0.00' && store.getTransactionAmount() !== 0
       ? updateValue({ statusKey: true })
       : updateValue({ statusKey: false });
   };
 
-  const $headerTransactionWrapper = Element('div', {
+  const $headerTransactionWrapper = createElement('div', {
     class: 'header-transaction-content',
     children: [$recipeButton, $expenseButton, $transferButton],
   });

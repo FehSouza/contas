@@ -1,4 +1,4 @@
-import { Element } from '../../shared/Element/index.js';
+import { createElement } from '../../../utils/createElement/index.js';
 import { Button } from '../../shared/Button/index.js';
 import { importCSS } from '../../../utils/importCSS/index.js';
 import { WalletsList } from '../../WalletsList/index.js';
@@ -6,7 +6,7 @@ import { InfoWallet } from '../../WalletInfo/index.js';
 import { AddTransactionInfo } from '../../../pages/AddTransactionInfo/index.js';
 import { store } from '../../../store/index.js';
 
-importCSS('./src/components/modals/SelectWallet/styles.css');
+importCSS('modals/SelectWallet');
 
 export const SelectWallet = (add) => {
   const addWalletClick = (id) => {
@@ -28,21 +28,29 @@ export const SelectWallet = (add) => {
     }
   };
 
-  const $title = Element('span', { class: 'add-new-wallet-title', children: 'Nome da carteira:' });
-  const $titleInput = Element('input', { class: 'add-new-wallet-input', type: 'text', onkeyup: () => handleInputs() });
-  const $titleWrapper = Element('div', { class: 'add-new-wallet-wrapper', children: [$title, $titleInput] });
+  const $title = createElement('span', { class: 'add-new-wallet-title', textContent: 'Nome da carteira:' });
+  const $titleInput = createElement('input', {
+    class: 'add-new-wallet-input',
+    type: 'text',
+    onkeyup: () => handleInputs(),
+  });
+  const $titleWrapper = createElement('div', { class: 'add-new-wallet-wrapper', children: [$title, $titleInput] });
 
-  const $user = Element('span', { class: 'add-new-wallet-title', children: 'Nome do usuário:' });
-  const $userInput = Element('input', { class: 'add-new-wallet-input', type: 'text', onkeyup: () => handleInputs() });
-  const $userWrapper = Element('div', { class: 'add-new-wallet-wrapper', children: [$user, $userInput] });
+  const $user = createElement('span', { class: 'add-new-wallet-title', textContent: 'Nome do usuário:' });
+  const $userInput = createElement('input', {
+    class: 'add-new-wallet-input',
+    type: 'text',
+    onkeyup: () => handleInputs(),
+  });
+  const $userWrapper = createElement('div', { class: 'add-new-wallet-wrapper', children: [$user, $userInput] });
 
-  const $amount = Element('span', { class: 'add-new-wallet-title', children: 'Valor inicial:' });
-  const $amountInput = Element('input', {
+  const $amount = createElement('span', { class: 'add-new-wallet-title', textContent: 'Valor inicial:' });
+  const $amountInput = createElement('input', {
     class: 'add-new-wallet-input',
     type: 'number',
     onkeyup: () => handleInputs(),
   });
-  const $amountWrapper = Element('div', { class: 'add-new-wallet-wrapper', children: [$amount, $amountInput] });
+  const $amountWrapper = createElement('div', { class: 'add-new-wallet-wrapper', children: [$amount, $amountInput] });
 
   const handleInputs = () => {
     $titleInput.value && $userInput.value && $amountInput.value
@@ -80,31 +88,31 @@ export const SelectWallet = (add) => {
     { wallet: 'Adicione uma nova carteira', amount: false },
     { blueCard: true, isButton: true, funcButton: addNewWallet }
   );
-  const $addNewWallet = Element('div', {
+  const $addNewWallet = createElement('div', {
     class: 'add-new-wallet-content',
     children: [$titleWrapper, $userWrapper, $amountWrapper, $buttonAddWallet],
   });
 
-  const $addWalletWrapper = Element('div', { class: 'add-wallet-wrapper', children: $addWallet });
+  const $addWalletWrapper = createElement('div', { class: 'add-wallet-wrapper', children: $addWallet });
 
   if (add) {
     $addWalletWrapper.appendChild($addNewWallet);
     store.setAddWalletStatus(true);
   }
 
-  const $content = Element('div', {
+  const $content = createElement('div', {
     class: 'select-wallet-content',
     children: [$addWalletWrapper],
     onClick: (event) => event.stopPropagation(),
   });
-  const $textWithoutWallet = Element('span', {
+  const $textWithoutWallet = createElement('span', {
     class: 'text-without-wallet',
     textContent: 'Não há nenhuma carteira adicionada.',
   });
 
   store.getWallets().length ? $content.appendChild($listWallets) : $content.appendChild($textWithoutWallet);
 
-  const $container = Element('div', {
+  const $container = createElement('div', {
     class: 'select-wallet-container',
     children: $content,
     onClick: (event) => {

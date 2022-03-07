@@ -1,9 +1,9 @@
-import { Element } from '../shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { Button } from '../shared/Button/index.js';
 import { Icon } from '../shared/Icon/index.js';
 
-importCSS('./src/components/StatusAccount/styles.css');
+importCSS('StatusAccount');
 
 export const StatusAccount = (setStatus) => {
   const $icon = Icon('check');
@@ -20,7 +20,7 @@ export const StatusAccount = (setStatus) => {
     setStatus(payed);
   };
 
-  const $title = Element('h2', { class: 'title-status-account', children: 'Status' });
+  const $title = createElement('h2', { class: 'title-status-account', textContent: 'Status' });
 
   const $buttonTogglePay = Button({ class: 'button-toggle', onClick: toggleButtons });
   const $togglePay = Button({ class: ['toggle-pay', 'toggle-pay-pay'], title: 'Pago', onClick: toggleButtons });
@@ -28,11 +28,11 @@ export const StatusAccount = (setStatus) => {
   $buttonToggleNoPay.appendChild($icon);
   const $toggleNoPay = Button({ class: 'toggle-pay', title: 'Não pago', onClick: toggleButtons });
 
-  const $toggle = Element('div', {
+  const $toggle = createElement('div', {
     class: 'toggle-status-account',
     children: [$buttonTogglePay, $togglePay, $buttonToggleNoPay, $toggleNoPay],
   });
 
-  const $statusAccountContent = Element('div', { class: 'status-account', children: [$title, $toggle] });
+  const $statusAccountContent = createElement('div', { class: 'status-account', children: [$title, $toggle] });
   return $statusAccountContent;
 };

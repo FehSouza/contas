@@ -1,18 +1,18 @@
-import { Element } from '../shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { Icon } from '../shared/Icon/index.js';
 import { formatMoney } from '../../utils/currency/index.js';
 import { Button } from '../shared/Button/index.js';
 import { SelectWallet } from '../modals/SelectWallet/index.js';
 
-importCSS('./src/components/WalletInfo/styles.css');
+importCSS('WalletInfo');
 
 export const InfoWallet = ({ wallet, user, amount }, { blueCard, isButton, funcButton, animation, funcDelete }) => {
-  const $icon = Element('div', { class: 'wallet-icon', children: Icon('wallet', 'fa-wallet-icon') });
+  const $icon = createElement('div', { class: 'wallet-icon', children: Icon('wallet', 'fa-wallet-icon') });
 
-  const $title = Element('h3', { class: 'wallet-title', children: wallet });
-  const $user = Element('span', { class: 'wallet-user', children: user });
-  const $titleAndUser = Element('div', { class: 'wallet-title-and-user', children: [$title, $user] });
+  const $title = createElement('h3', { class: 'wallet-title', children: wallet });
+  const $user = createElement('span', { class: 'wallet-user', children: user });
+  const $titleAndUser = createElement('div', { class: 'wallet-title-and-user', children: [$title, $user] });
 
   const $walletButton = Button({
     class: 'wallet-button',
@@ -25,10 +25,10 @@ export const InfoWallet = ({ wallet, user, amount }, { blueCard, isButton, funcB
     },
   });
   const value = formatMoney(amount);
-  const $amount = Element('span', { class: 'wallet-amount', children: $walletButton });
+  const $amount = createElement('span', { class: 'wallet-amount', children: $walletButton });
 
-  const $walletWrapper = Element('div', { class: 'wallet-wrapper', children: [$icon, $titleAndUser, $amount] });
-  if (amount) {
+  const $walletWrapper = createElement('div', { class: 'wallet-wrapper', children: [$icon, $titleAndUser, $amount] });
+  if (amount || amount === 0) {
     $amount.textContent = value;
     const $deleteButton = Button({
       class: 'wallet-delete-button',

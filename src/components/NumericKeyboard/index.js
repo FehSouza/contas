@@ -1,19 +1,24 @@
-import { Element } from '../shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { Button } from '../shared/Button/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { store } from '../../store/index.js';
 
-importCSS('./src/components/NumericKeyboard/styles.css');
+importCSS('NumericKeyboard');
 
 export const NumericKeyboard = (updateValue) => {
-  const $keyboardWrapperInt = Element('div', { class: 'numeric-keyboard-wrapper-int' });
-  const $keyboardWrapperExt = Element('div', { class: 'numeric-keyboard-wrapper-ext', children: $keyboardWrapperInt });
+  const $keyboardWrapperInt = createElement('div', { class: 'numeric-keyboard-wrapper-int' });
+  const $keyboardWrapperExt = createElement('div', {
+    class: 'numeric-keyboard-wrapper-ext',
+    children: $keyboardWrapperInt,
+  });
 
   let value = '';
   const valueConvert = (elem) => {
     elem === $keyBackspace ? (value = value.slice(0, value.length - 1)) : (value += elem);
     const number = (Number(value) / 100).toFixed(2);
-    store.setTransactionAmount(number);
+    store.getTypeTransaction() === 'expense'
+      ? store.setTransactionAmount(number * -1)
+      : store.setTransactionAmount(number);
     number !== '0.00' ? updateValue({ statusKey: true }) : updateValue({ statusKey: false });
   };
 
@@ -30,7 +35,7 @@ export const NumericKeyboard = (updateValue) => {
   });
   $keyboardWrapperInt.appendChild($keyBackspace);
 
-  const $keyboardContent = Element('div', {
+  const $keyboardContent = createElement('div', {
     class: 'keyboard-content',
     children: [$keyboardWrapperExt],
   });

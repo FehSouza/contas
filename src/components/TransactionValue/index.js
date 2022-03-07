@@ -1,12 +1,12 @@
-import { Element } from '../shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { formatMoney } from '../../utils/currency/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { store } from '../../store/index.js';
 
-importCSS('./src/components/TransactionValue/styles.css');
+importCSS('TransactionValue');
 
 export const TransactionValue = () => {
-  const $amount = Element('h2', { class: 'transaction-amount', children: formatMoney(0) });
+  const $amount = createElement('h2', { class: 'transaction-amount', textContent: formatMoney(0) });
 
   const updateTransactionAmount = (tab) => {
     if (tab === 'recipe') $amount.classList.add('transaction-amount-recipe');
@@ -16,6 +16,6 @@ export const TransactionValue = () => {
   updateTransactionAmount(store.getTypeTransaction());
 
   $amount.textContent = formatMoney(store.getTransactionAmount());
-  const $amountWrapper = Element('div', { class: 'transaction-amount-wrapper', children: $amount });
+  const $amountWrapper = createElement('div', { class: 'transaction-amount-wrapper', children: $amount });
   return $amountWrapper;
 };

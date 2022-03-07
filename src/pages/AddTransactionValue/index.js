@@ -1,14 +1,14 @@
 import { HeaderTransaction } from '../../components/HeaderTransaction/index.js';
 import { NumericKeyboard } from '../../components/NumericKeyboard/index.js';
 import { AddTransactionInfo } from '../AddTransactionInfo/index.js';
-import { Element } from '../../components/shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { Button } from '../../components/shared/Button/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { store } from '../../store/index.js';
 import { TransactionValue } from '../../components/TransactionValue/index.js';
 import { formatMoney } from '../../utils/currency/index.js';
 
-importCSS('./src/pages/AddTransactionValue/styles.css');
+importCSS('pages/AddTransactionValue');
 
 export const AddTransactionValue = () => {
   store.setTransactionAmount(0);
@@ -40,7 +40,7 @@ export const AddTransactionValue = () => {
     if (store.getTypeTransaction() === 'transfer') $value.classList.add('transaction-amount-transfer');
   };
 
-  const $addTransactionContent = Element('div', {
+  const $addTransactionContent = createElement('div', {
     class: 'add-transaction-content',
     children: [HeaderTransaction(updateValue), $transactionValue, NumericKeyboard(updateValue), $continueButton],
   });

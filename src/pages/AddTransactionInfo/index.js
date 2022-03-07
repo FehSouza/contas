@@ -1,4 +1,4 @@
-import { Element } from '../../components/shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { Button } from '../../components/shared/Button/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { formatMoney } from '../../utils/currency/index.js';
@@ -15,7 +15,7 @@ import { StatusAccount } from '../../components/StatusAccount/index.js';
 import { handleNavigationHome } from '../../index.js';
 import { SelectWallet } from '../../components/modals/SelectWallet/index.js';
 
-importCSS('./src/pages/AddTransactionInfo/styles.css');
+importCSS('pages/AddTransactionInfo');
 
 export const AddTransactionInfo = ({ walletInfo }) => {
   const handleNavigationDelete = () => {
@@ -29,17 +29,22 @@ export const AddTransactionInfo = ({ walletInfo }) => {
     icon: 'delete',
     onClick: () => handleNavigationDelete(),
   });
-  const $value = Element('span', { class: 'transaction-value', children: formatMoney(store.getTransactionAmount()) });
-  const $valueWrapper = Element('div', { class: 'transaction-value-wrapper', children: $value });
-  const $boxInvisible = Element('div', { class: 'box-invisible' });
+  const $value = createElement('span', {
+    class: 'transaction-value',
+    textContent: formatMoney(store.getTransactionAmount()),
+  });
+  const $valueWrapper = createElement('div', { class: 'transaction-value-wrapper', children: $value });
+  const $boxInvisible = createElement('div', { class: 'box-invisible' });
 
-  const $valueContent = Element('div', {
+  const $valueContent = createElement('div', {
     class: 'transaction-value-content',
     children: [$deleteButton, $valueWrapper, $boxInvisible],
   });
 
   const updateValue = () => {
     $valueWrapper.className = 'transaction-value-wrapper';
+    $value.innerHTML = '';
+    $value.textContent = formatMoney(store.getTransactionAmount());
     if (store.getTypeTransaction() === 'recipe') $valueWrapper.classList.add('transaction-value-wrapper-recipe');
     if (store.getTypeTransaction() === 'expense') $valueWrapper.classList.add('transaction-value-wrapper-expense');
     if (store.getTypeTransaction() === 'transfer') $valueWrapper.classList.add('transaction-value-wrapper-transfer');
@@ -52,7 +57,10 @@ export const AddTransactionInfo = ({ walletInfo }) => {
     disabled: true,
     onClick: () => {
       if (date && category && wallet) {
-        store.addBill(date, { amount: store.getTransactionAmount(), category, subcategory, wallet, status });
+        const amount = store.getTransactionAmount();
+        const type = store.getTypeTransaction();
+        store.addBill(date, { amount, category, subcategory, wallet, status, type });
+        store.setAmountTotal({ amount, type });
         handleNavigationHome();
       }
     },
@@ -107,11 +115,11 @@ export const AddTransactionInfo = ({ walletInfo }) => {
   const $tag = Tag();
   const $comments = Comments();
 
-  const $addTransactionContent = Element('div', {
+  const $addTransactionContent = createElement('div', {
     class: 'add-transaction-content-info',
     children: [HeaderTransaction(updateValue), $valueContent, $walletInfo, $categoryInfo],
   });
-  const $addTransactionContainer = Element('div', {
+  const $addTransactionContainer = createElement('div', {
     class: 'add-transaction-container-info',
     children: [$addTransactionContent, $date, $installment, $statusAccount, $tag, $comments, $finishButton],
   });

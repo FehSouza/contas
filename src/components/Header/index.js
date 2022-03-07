@@ -1,15 +1,15 @@
 import { formatMoney } from '../../utils/currency/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
-import { Element } from '../shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { Icon } from '../shared/Icon/index.js';
 
-importCSS('./src/components/Header/styles.css');
+importCSS('Header');
 
 export const Header = (moneyTotal) => {
   const value = formatMoney(moneyTotal);
   const $icon = Icon('coin');
-  const $moneyTotal = Element('span', { class: 'header-money-total', children: value });
-  const $moneyWrapper = Element('div', { class: 'header-money-wrapper', children: [$moneyTotal, $icon] });
-  const $container = Element('div', { class: 'header-container', children: $moneyWrapper });
+  const $moneyTotal = createElement('span', { class: 'header-money-total', textContent: value });
+  const $moneyWrapper = createElement('div', { class: 'header-money-wrapper', children: [$moneyTotal, $icon] });
+  const $container = createElement('div', { class: 'header-container', children: $moneyWrapper });
   return $container;
 };

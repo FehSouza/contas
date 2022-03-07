@@ -1,15 +1,14 @@
-import { Element } from '../shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { Button } from '../shared/Button/index.js';
 import { Icon } from '../shared/Icon/index.js';
-import { store } from '../../store/index.js';
 
-importCSS('./src/components/Installment/styles.css');
+importCSS('Installment');
 
 export const Installment = () => {
-  const $title = Element('h2', { class: 'installment-title', children: 'Parcelas' });
+  const $title = createElement('h2', { class: 'installment-title', textContent: 'Parcelas' });
 
-  const $value = Element('input', {
+  const $value = createElement('input', {
     class: 'installment-value',
     placeholder: 'Parcela',
     type: 'number',
@@ -33,11 +32,11 @@ export const Installment = () => {
     }
   };
 
-  const $checkText = Element('span', { class: 'installment-check-text', children: 'Dividir valor' });
-  const $checkWrapper = Element('div', { class: 'installment-check-wrapper', children: [$checkBox, $checkText] });
-  const $installmentWrapper = Element('div', { class: 'installment-wrapper', children: [$value, $checkWrapper] });
+  const $checkText = createElement('span', { class: 'installment-check-text', textContent: 'Dividir valor' });
+  const $checkWrapper = createElement('div', { class: 'installment-check-wrapper', children: [$checkBox, $checkText] });
+  const $installmentWrapper = createElement('div', { class: 'installment-wrapper', children: [$value, $checkWrapper] });
 
-  const $installmentContent = Element('div', {
+  const $installmentContent = createElement('div', {
     class: 'installment-content',
     children: [$title, $installmentWrapper],
   });

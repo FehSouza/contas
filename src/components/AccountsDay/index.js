@@ -1,13 +1,13 @@
-import { Element } from '../shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { Bill } from '../Bill/index.js';
 
-importCSS('./src/components/AccountsDay/styles.css');
+importCSS('AccountsDay');
 
 export const AccountsDay = (props) => {
-  const $accountsDayWrapper = Element('div', { class: 'accounts-day-wrapper' });
+  const $accountsDayWrapper = createElement('div', { class: 'accounts-day-wrapper' });
 
-  const $date = Element('h3', { class: 'accounts-day-date', children: props.date });
+  const $date = createElement('h3', { class: 'accounts-day-date', textContent: props.date });
   $accountsDayWrapper.appendChild($date);
 
   for (const item of props.bills) {

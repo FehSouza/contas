@@ -12,6 +12,15 @@ class Store {
   getTransactionAmount = () => this._state.transactionAmount;
   setTransactionAmount = (value) => (this._state.transactionAmount = value);
 
+  getAmountTotal = () => this._state.amountTotal;
+  setAmountTotal = ({ amount, type }) => {
+    let amountTotal = Number(this._state.amountTotal);
+
+    if (type === 'expense' || type === 'recipe') amountTotal += Number(amount);
+    if (type === 'transfer') amountTotal = amountTotal;
+    this._state.amountTotal = amountTotal;
+  };
+
   getWallets = () => this._state.wallets;
   addWallet = (newWallets) => (this._state.wallets = [...this._state.wallets, newWallets]);
   deleteWallet = (id) => {
@@ -62,9 +71,10 @@ class Store {
 const typeTransaction = 'expense';
 const transactionAmount = 0;
 const bills = [];
-const wallets = [{ wallet: 'NuBank', user: 'Raul', amount: 100 }];
+const wallets = [];
 const wallet = undefined;
 const addWalletStatus = false;
+const amountTotal = 0;
 
-const inicialStore = { typeTransaction, transactionAmount, bills, wallets, wallet, addWalletStatus };
+const inicialStore = { typeTransaction, transactionAmount, bills, wallets, wallet, addWalletStatus, amountTotal };
 export const store = new Store(inicialStore);

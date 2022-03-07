@@ -1,12 +1,12 @@
-import { Element } from '../shared/Element/index.js';
+import { createElement } from '../../utils/createElement/index.js';
 import { importCSS } from '../../utils/importCSS/index.js';
 import { InfoWallet } from '../WalletInfo/index.js';
 import { store } from '../../store/index.js';
 
-importCSS('./src/components/WalletsList/styles.css');
+importCSS('WalletsList');
 
 export const WalletsList = ({ blueCard, isButton, funcButton, animation }) => {
-  const $walletListWrapper = Element('div', { class: 'wallets-list-wrapper' });
+  const $walletListWrapper = createElement('div', { class: 'wallets-list-wrapper' });
 
   const updateList = () => {
     $walletListWrapper.innerHTML = '';
@@ -25,7 +25,7 @@ export const WalletsList = ({ blueCard, isButton, funcButton, animation }) => {
   const addAllWallets = (wallets) => {
     if (store.getWallets().length < 1) {
       $walletListWrapper.appendChild(
-        Element('span', {
+        createElement('span', {
           class: 'text-without-wallet',
           textContent: 'Não há nenhuma carteira adicionada.',
         })
