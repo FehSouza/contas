@@ -11,7 +11,7 @@ export const AddWallet = () => {
   const $titleInput = createElement('input', {
     class: 'add-new-wallet-input-2',
     type: 'text',
-    onkeyup: () => handleInputs(),
+    keyup: () => handleInputs(),
   });
   const $titleWrapper = createElement('div', { class: 'add-new-wallet-wrapper-2', children: [$title, $titleInput] });
 
@@ -19,7 +19,7 @@ export const AddWallet = () => {
   const $userInput = createElement('input', {
     class: 'add-new-wallet-input-2',
     type: 'text',
-    onkeyup: () => handleInputs(),
+    keyup: () => handleInputs(),
   });
   const $userWrapper = createElement('div', { class: 'add-new-wallet-wrapper-2', children: [$user, $userInput] });
 
@@ -27,7 +27,7 @@ export const AddWallet = () => {
   const $amountInput = createElement('input', {
     class: 'add-new-wallet-input-2',
     type: 'number',
-    onkeyup: () => handleInputs(),
+    keyup: () => handleInputs(),
   });
   const $amountWrapper = createElement('div', { class: 'add-new-wallet-wrapper-2', children: [$amount, $amountInput] });
 
